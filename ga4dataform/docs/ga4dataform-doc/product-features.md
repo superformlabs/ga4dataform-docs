@@ -15,12 +15,66 @@ slug: /product-features
 
 <details>
   <summary>Incremental loading</summary>
+  <p>The incrementality works by processing only new GA4 event data without reprocessing the entire dataset. Here's a summary of how this is implemented:</p>
+  
+  **1. Checkpoint Management:**
+  
+  - A `date_checkpoint` variable is declared and set to the day after the most recent `event_date` found in the existing table (`stg_ga4_events`).
+  - This ensures that only data newer than the most recent processed date is considered for the next load.
+
+  ```
+  set date_checkpoint = (
+  select max(event_date) + 1 
+  from `project_id.superform_transformations.stg_ga4_events` 
+  where is_final = true
+);
+  ``` 
+  2. **Deletion of Updated Data:**
+  
+  - Any existing records from the target table (`stg_ga4_events`) where `event_date` is equal to or greater than the `date_checkpoint` are deleted. This ensures that if GA4 has re-processed any past data, it gets removed and replaced by fresh data.
+  ```
+  delete from `project_id.superform_transformations.stg_ga4_events`
+  where event_date >= date_checkpoint;
+  ```
+
+  3. **Filtering New Data:**
+  - The pipeline processes only the new GA4 events by using `_table_suffix` to fetch data from BigQuery tables (`events_*`) where the `event_date` (derived from `_table_suffix`) is greater than or equal to the `date_checkpoint`.
+  - This prevents reprocessing old event data.
+
+  ```
+  and parse_date('%Y%m%d', regexp_extract(_table_suffix, '[0-9]+')) >= date_checkpoint;
+  ```
+
+  4. **Filtering out Intraday Events:**
+  - Intraday data, which might still be incomplete or subject to change, is excluded from the query using this condition:
+
+  ```
+  and contains_substr(_table_suffix, 'intraday') is false;
+  ```
+
+  5. **Finalization Logic:**
+  - The field `is_final` is computed in the process to determine whether the data is final (older than 3 days). This is used to manage the checkpoint logic, ensuring incremental processing only on data that is finalized.
+
+  ```
+  date_diff(current_date(), cast(event_date as date format 'YYYYMMDD'), day) > 3 as is_final;
+  ```
+
 </details>
+
 
 <details>
   <summary>Partitioning & Clustering</summary>
   <p>Our tables use date-based partitioning rather than GA4's default date-sharding approach, leading to better performance and simpler query patterns.</p>
-  <p>We implement clustering on all tables to potentially optimize query speeds and reduce processing costs.</p>
+  <p>We have implemented clustering on all tables to potentially optimize query speeds and reduce processing costs.</p>
+
+  | Table                        | Partitioned By | Clustered By           |
+|------------------------------|----------------|-------------------------|
+| demo_daily_sessions_report.sqlx | session_date   | None                    |
+| stg_ga4_events.sqlx          | event_date     | event_name              |
+| int_ga4_events.sqlx          | event_date     | event_name, session_id  |
+| int_ga4_sessions.sqlx        | session_date   | session_id              |
+
+
 </details>
 
 <details>
@@ -35,14 +89,48 @@ slug: /product-features
 </details>
 
 <details>
-  <summary>GA4 Sessions Processing Steps</summary>
-  <p>Our pipeline processes GA4 session data through several key steps:</p>
-  <ol>
-    <li>We extract and flatten the required columns from raw GA4 data</li>
-    <li>We clean and prepare the events, followed by grouping them into sessions using unique session IDs</li>
-    <li>We apply source/medium corrections by analyzing collected_traffic_source, event_params, UTM parameters, and various click IDs (like gclid, gbraid)</li>
-    <li>We implement channel grouping and attribution models, with special handling for synthetic events, duplicates, and parameter variations to ensure data accuracy</li>
-  </ol>
+  <summary>Sessionization</summary>
+  <p>The GA4 session table provide the following information:</p>
+
+  - **Source / Medium / Campaign** for at least three standard attributions:
+    - Last click
+    - Last non-direct click (with a particular lookback window, default 90 days)
+    - First click
+  - For each attribution, **Default Channel Groups** — following the same rules as in Google Analytics 4.
+  - **Landing page, landing page referrer, and exit page**, which can also be structured with a prepared hostname, page path, and query parameters.
+  - Session properties like: `is_direct_session`, `is_engaged_session`, `is_debug_session`, `is_cross_domain`
+  - **Unique session_id**
+  - **Session duration**
+  - **engagement time**
+  - **User information:** `user_id`, `last_user_id`, `user_pseudo_id`
+  - etc...
+
+  <p>These columns are often essential for building reports and simplifying data pipelines based on session data.</p>
+
+  ### Common Session Processing Pipeline
+
+  1. **Extract all necessary columns** from raw GA4 data to flat event tables.
+  2. **Clean and prepare events**.
+  3. **Group events into sessions** using the unique `session_id`.
+  4. **Adjust Google’s default source / medium rules** and add channel grouping.
+  5. **Add last non-direct attribution**.
+
+  **Sources to calculate source / medium include:**
+  
+  - `collected_traffic_source` column
+  - Source and medium from `event_params`
+  - UTM parameters from `page_location`
+  - Click IDs from `event_params` or `page_location`, such as `gbraid`, `wbraid`, `gclid`, `dclid`, `srsltid`, and more.
+
+  <p>Once all sources are combined, additional logic is applied to create a fixed source/medium. For example:</p>
+
+  - If `gclid`, `gbraid`, or `wbraid` is present, then source/medium should be `google / cpc`.
+  - If the referrer matches `%android-app://com.google%`, then source/medium should be `google / organic`.
+  - There are special rules for click IDs, social platforms, and apps.
+
+  <p>For channel grouping, Google provides a list with over 1,100 rules to define groups for known domains.</p>
+  <p>After these steps, we calculate last non-direct attribution and compare it with the GA UI and values in `session_traffic_source_last_click`. Source/medium fixes can sometimes reduce direct traffic by 15-20%, improving attribution for paid campaigns.</p>
+
 </details>
 
 <details>
@@ -52,17 +140,16 @@ slug: /product-features
 
 <details>
   <summary>Looker Studio Report Template</summary>
-  <p>Access our ready-to-use Looker Studio dashboard template to jumpstart your GA4 reporting and analysis.</p>
+  <p>Access our ready-to-use Looker Studio dashboard template to jumpstart your GA4 reporting and analysis (coming soon).</p>
 </details>
 
 <details>
   <summary>Basic Data Quality Checks</summary>
-  <p>We include customized data validation rules for GA4 that can be easily enabled or disabled through the configuration file.</p>
+  <p>We include customized data validation rules for GA4 that can be easily enabled or disabled through the configuration file. See the assertions section for more details</p>
 </details>
 
 <details>
   <summary>Comprehensive GA4 Data Diagnostics</summary>
-
 - Cardinality Analysis:
   - Tracks unique pages, sources, mediums, and campaign names
   - Monitors hostname variations
