@@ -46,4 +46,4 @@ This folder contains assertion files:
 | **assertions_sessions_validity**           | Check the validation of sessions using multiple criteria: `landing_page_location`, `user_pseudo_id`, `session_id`, `session_date`, `device.category`, and `session_start_timestamp_utc` should not be null. |
 | **assertions_tables_timeliness**           | Check if session and events tables across different layers (staging, intermediate, etc.) are always synchronized.       |
 | **assertions_transaction_id_completeness** | Check for null or “not set” transaction IDs.                                                                             |
-| **assertions_user_pseudo_id_completeness** | Check for null `user_pseudo_id`.       
+| **assertions_user_pseudo_id_completeness** | Check for null `user_pseudo_id`. Note: this is normal for cookieless pings (hits where consent is not granted)

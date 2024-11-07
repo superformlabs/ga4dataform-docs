@@ -77,21 +77,29 @@ definitions
 
 
 ## BigQuery Output
-GA4Dataform generates tables in BigQuery. Everything will be under the dataform-package project with the following structure: 
+
+GA4Dataform produces tables in 3 datasets in BigQuery.
+- one dataset for the output tables (final tables, the ones you will be using)
+- one dataset for intermediate and staging tables, used during the build process
+- one dataset where quality control results are stored (assertions)
+
+If you leave the default dataset names untouched, everything will be under the dataform-package project with the following structure:
 
 ```
 Dataform-package (project)
-├── superform_outputs (dataset)
+├── superform_outputs_nnn (dataset)
 │   ├── demo_daily_sessions_report (tables)
 │   ├── demo_diagnostics
 │   ├── ga4_events
 │   ├── ga4_sessions
-├── superform_transformations
+├── superform_transformations_nnn
 │   ├── int_ga4_events
 │   ├── int_ga4_sessions
 │   ├── source_categories
 │   ├── stg_ga4_events
 │   ├── stg_ga4_sessions
-├── Superform_quality
+├── Superform_quality_nnn
 │   ├── assertion_logs
 ```
+
+where the suffix `_nnn` is the number of your GA4 property ID, e.g. `superform_outputs_5318008`

@@ -33,7 +33,8 @@ GA4 Dataform Model Custom Configuration ("config.js")
   <strong>Example:</strong>
   ```
   CUSTOM_EVENT_PARAMS_ARRAY: [
-    { name: 'custom_param', type: 'string', renameTo: 'custom_output' }
+    { name: 'custom_param', type: 'string', renameTo: 'custom_output' },
+    { name: 'n_items', type: 'int', description: 'The number of items in the shopping cart at the time of the event' }
   ]
   ```
 </details>
@@ -59,11 +60,13 @@ GA4 Dataform Model Custom Configuration ("config.js")
   CUSTOM_URL_PARAMS_ARRAY: []
   ```
   <strong>Description</strong>: Allows you to extract custom URL parameters into their own columns.  
-  <strong>Customization</strong>: Define custom URL parameters you want to extract in the format `"{ name: "param_name", cleaningMethod: "method" }"`. Note that only strings are supported.  
+  <strong>Customization</strong>: Define custom URL parameters you want to extract in the format `"{ name: "param_name", cleaningMethod: method }"`. Note that url params will always be strings.
+  <strong>Cleaning Methods</strong>: For now, the only cleaning method supported is `lowerSQL`. This will transform the string to lower case. Note: use `lowerSQL` without quotes.
   <strong>Example:</strong>
   ```
   CUSTOM_URL_PARAMS_ARRAY: [
-    { name: "q", cleaningMethod: lowerSQL }
+    { name: "q", cleaningMethod: lowerSQL, description: "internal search engine term used - transformed to lowe case" },
+    { name: "product-size", renameTo: "size" }
   ]
   ```
 </details>
@@ -79,7 +82,7 @@ GA4 Dataform Model Custom Configuration ("config.js")
   <strong>Customization</strong>: Add event names you don’t want to process.  
   <strong>Example:</strong> 
   ```
-  "EVENTS_TO_EXCLUDE: ["user_engagement", "scroll"]"
+  EVENTS_TO_EXCLUDE: ["user_engagement", "scroll"]
   ``` 
   <strong>Hostname Exclude/Include</strong>
   
@@ -89,6 +92,11 @@ GA4 Dataform Model Custom Configuration ("config.js")
   ```
   <strong>Description</strong>: Exclude or include specific hostnames from the data.  
   <strong>Customization</strong>: Add hostnames to either list based on whether you want to include or exclude them from the data.
+  <strong>Example:</strong>
+  ```
+  HOSTNAME_EXCLUDE: []
+  HOSTNAME_INCLUDE_ONLY: [ "www.ga4dataform.com", "ga4dataform.com" ]
+  ```
 </details>
 
 <details>

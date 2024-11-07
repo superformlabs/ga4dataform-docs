@@ -2,7 +2,7 @@
 title: Permissions
 description: Access needed
 sidebar_position: 7
-slug: /pernissions
+slug: /permissions
 ---
 
 Detailed list of all the permissions requiered to run the installer:
