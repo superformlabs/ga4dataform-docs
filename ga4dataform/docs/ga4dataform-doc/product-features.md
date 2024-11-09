@@ -70,9 +70,9 @@ slug: /product-features
   | Table                        | Partitioned By | Clustered By           |
 |------------------------------|----------------|-------------------------|
 | demo_daily_sessions_report.sqlx | session_date   | None                    |
-| stg_ga4_events.sqlx          | event_date     | event_name              |
-| int_ga4_events.sqlx          | event_date     | event_name, session_id  |
+| ga4_events.sqlx          | event_date     | event_name, session_id              |
 | int_ga4_sessions.sqlx        | session_date   | session_id              |
+| ga4_sessions.sqlx | session_date | session_id
 
 
 </details>
