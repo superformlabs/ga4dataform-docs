@@ -9,13 +9,13 @@ GA4Dataform is your one-click solution to harness the full power of GA4 data in 
 
 ## Versions
 
-### Open-source version
+### GA4Dataform Community (Open-source)
 The open-source version of GA4Dataform will be available as a public repository on Github. This version contains the Dataform models without the ‘one-click’ installer app. The open-source version contains the same .sqlx and .js files as the ‘Core’ variant of GA4Dataform.
 
-### Installer version
+### GA4Dataform Core (Installer)
 The installer version of GA4Dataform is a ‘one-click’ app that handles the complete installation of the package. This version is available in the Superform Labs store.
 
-### Premium
+### GA4Dataform Premium
 Coming soon
 
 ## About Us
@@ -29,7 +29,6 @@ GA4Dataform is a product by Superform Labs OÜ. Our company is settled in Estoni
 
 ## Support
 support@ga4dataform.com
-Users of the open-source and the Core variant of GA4Dataform are not eligible for support.
 
 ## Contact
 If you have any other questions, feel free to contact us at: hello@ga4dataform.com.
