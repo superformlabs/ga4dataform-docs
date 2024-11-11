@@ -8,16 +8,16 @@ slug: /post-installation
 ## Browse to the files
 On the repository page, select the created repository you just created, and browse to the Development workspace
 
-![screenshot](images/Browse_files.png)
+![screenshot](images/post-installation-guide/Browse_files.png)
 
 Browse to includes/custom_config.js and adjust the parameters to your needs
 
-![screenshot](images/custom_config.png)
+![screenshot](images/post-installation-guide/custom_config.png)
 
 ## Add some customisations
 Now, you can configure custom parameters you want in your events dataset. Let’s look at GA4 and just use those:
 
-![screenshot](images/custom_params.png)
+![screenshot](images/post-installation-guide/custom_params.png)
 
 
 We see 7 custom dimensions, of which 6 are needed
@@ -34,7 +34,7 @@ I will rename the event param shop to become the column name shop_name
 
 This website uses q as search term url parameter, and some other URL parameters to indicate filters. Let’s add those:
 
-![screenshot](images/url_params.png)
+![screenshot](images/post-installation-guide/url_params.png)
 
 
 ## Save your changes
@@ -42,15 +42,15 @@ When making changes, you have to test them (which we’re not going to do now, h
 First commit, then push
 Commit
 
-![screenshot](images/commit.png)
+![screenshot](images/post-installation-guide/commit.png)
 
 You've pushed successfully when the workspace is up to date and the green checkmark shows
 
-![screenshot](images/push.png)
+![screenshot](images/post-installation-guide/push.png)
 
 ## Run the model
 Under "releases and scheduling", you can find the preconfigured "production" configuration.
-![screenshot](images/push.png)
+![screenshot](images/post-installation-guide/push.png)
 
 
 Click start execution, and fill in the popup
@@ -59,13 +59,13 @@ Click "Start Execution" now.
 
 ## Check for success
 Under "workflow execution logs" you can check if the model has ran succesfully
-![screenshot](images/workflow_success.png)
+![screenshot](images/post-installation-guide/workflow_success.png)
 
 
 In this case, there is an error! Click "VIEW DETAILS"
 
 If we scroll down to row 629 we see that"ae-prijsfilter" is an invalid column name. Oops! We should have tested..
-![screenshot](images/prijsfilter.png)
+![screenshot](images/post-installation-guide/prijsfilter.png)
 
 
 Back to the source. Let’s rename the column to prijsfilter
@@ -90,7 +90,7 @@ If all check marks are green, the model ran successfully!
 ## Check Big Query
 Go to Bigquery, and you should see the new tables.
 Currently, the customisations are in the _outputs/ga4_events table in the schema under
-![screenshot](images/bq_output.png)
+![screenshot](images/post-installation-guide/bq_output.png)
 
 
 
@@ -99,7 +99,7 @@ Open Looker Studio
 Add data source, choose Big Query
 Browse to the demo_daily_sessions_report table
 Use session_date as date range dimension
-![screenshot](images/looker_bq.png)
+![screenshot](images/post-installation-guide/looker_bq.png)
 Click ADD
 # Now go wild!
-![screenshot](images/looker_dashboard.png)
+![screenshot](images/post-installation-guide/looker_dashboard.png)
