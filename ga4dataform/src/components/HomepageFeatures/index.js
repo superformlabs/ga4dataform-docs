@@ -7,7 +7,7 @@ const FeatureList = [
     title: 'Quick Setup',
     description: (
       <>
-        The GA4 Dataform model is designed for easy installation and immediate integration with your Google Analytics data in BigQuery, so you can start analyzing sessions data right away.
+        The GA4Dataform models are designed for easy installation and immediate integration with your Google Analytics data in BigQuery, so you can start analyzing sessions data right away.
       </>
     ),
   },
@@ -15,7 +15,7 @@ const FeatureList = [
     title: 'Actionable Insights',
     description: (
       <>
-        Focus on what matters most with automated data processing. The model aggregates and transforms GA4 data to create a ready-to-use sessions table, ideal for dashboards and reporting.
+        Focus on what matters most with automated data processing. The models aggregate and transform GA4 data to create ready-to-use events and sessions tables, ideal for dashboards and reporting.
       </>
     ),
   },

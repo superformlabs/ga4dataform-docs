@@ -20,7 +20,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="docs">
-            GA4 Dataform Doc
+            Access GA4Dataform Docs
           </Link>
         </div>
       </div>

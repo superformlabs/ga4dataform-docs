@@ -96,13 +96,13 @@ const config = {
             title: "More",
             items: [
               {
-                label: "GA4Ddataform",
+                label: "GA4Dataform",
                 href: "https://ga4dataform.com/",
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} superformlabs. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Superform Labs. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

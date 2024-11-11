@@ -5,7 +5,7 @@ sidebar_position: 1
 slug: /
 ---
 
-GA4Dataform is your one-click solution to harness the full power of GA4 data in BigQuery, without the hassle. Transform your raw GA4 event data into actionable insights with industry-leading, enterprise-level efficiency and precision. Designed for digital analysts, technical marketers, data teams, and developers.
+GA4Dataform is your 'one-click' solution to harness the full power of GA4 data in BigQuery, without the hassle. Transform your raw GA4 event data into actionable insights with industry-leading, enterprise-level efficiency and precision. Designed for digital analysts, technical marketers, data teams, and developers.
 
 ## Versions
 
@@ -14,9 +14,6 @@ The open-source version of GA4Dataform will be available as a public repository 
 
 ### GA4Dataform Core (Installer)
 The installer version of GA4Dataform is a ‘one-click’ app that handles the complete installation of the package. This version is available in the Superform Labs store.
-
-### GA4Dataform Premium
-Coming soon
 
 ## About Us
 GA4Dataform is a product by Superform Labs OÜ. Our company is settled in Estonia (EU), but we work remotely from different countries across the world. Together we have decades of experience in web and marketing analytics.
