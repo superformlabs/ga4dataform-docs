@@ -25,6 +25,7 @@ jobs:
         run: yarn install
 
       - name: Build project
+        working-directory: ga4dataform-docs
         run: yarn build
 
       - name: Checkout ga4dataform repo
