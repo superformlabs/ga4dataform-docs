@@ -36,10 +36,9 @@ jobs:
           path: ga4dataform
           token: ${{ secrets.BUILD_WORKFLOW }}
 
-      - name: Copy build files
+      - name: Copy all files and overwrite
         run: |
-          rm -rf ga4dataform/build
-          cp -R build/ ga4dataform/
+          cp -R ga4dataform-docs/build/. ga4dataform/
 
       - name: Commit and push changes to ga4dataform
         run: |
