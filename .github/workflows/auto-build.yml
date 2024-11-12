@@ -30,10 +30,10 @@ jobs:
         run: yarn build
 
       - name: Log contents of build directory
-        working-directory: ga4dataform
+        working-directory: ga4dataform-docs
         run: |
-          echo "Contents of build directory:"
-          ls -la build
+          echo "Contents of the entire repository:"
+          ls -laR
 
       - name: Checkout ga4dataform repo
         uses: actions/checkout@v3
