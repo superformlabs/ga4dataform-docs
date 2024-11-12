@@ -38,7 +38,7 @@ jobs:
 
       - name: Copy all files and overwrite
         run: |
-          cp -R ga4dataform-docs/build/. ga4dataform/
+          cp -R ga4dataform/build/. ga4dataform/
 
       - name: Commit and push changes to ga4dataform
         run: |
