@@ -22,6 +22,7 @@ jobs:
           node-version: '18' # specify the node version you need
 
       - name: Install dependencies
+        working-directory: ga4dataform
         run: yarn install
 
       - name: Build project
