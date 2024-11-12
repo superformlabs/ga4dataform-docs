@@ -39,10 +39,9 @@ jobs:
       - name: Copy build files
         run: |
           rm -rf ga4dataform/build
-          cp -R build/ ga4dataform/build/
+          cp -R build/ ga4dataform/
 
       - name: Commit and push changes to ga4dataform
-        working-directory: ga4dataform
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
