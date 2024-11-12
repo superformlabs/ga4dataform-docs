@@ -5,7 +5,17 @@ sidebar_position: 1
 slug: /quick-installation-guide
 ---
 
-## Activate Your License Key
+--- 
+
+## Walkthrough video
+
+<iframe width="640" height="360" src="https://www.loom.com/embed/684fa45119014ec8898e98b604328d48?sid=e2919baf-9ac7-4c21-97d6-7327e185ebdf" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+---
+
+## Text Guide
+
+### Activate Your License Key
 
 1. **Get your License Key**: After requesting access to [GA4Dataform](https://ga4dataform.com/), you will receive a confirmation email from Lemon Squeezy with your license key and a link to the installer. Save the license key, and click "Proceed to GA4Dataform installation".
 
@@ -21,7 +31,7 @@ Ensure that your Google Cloud Project meets the setup requirements (billing enab
 
 ---
 
-## Install GA4Dataform
+### Install GA4Dataform
 
 1. **Select Project and Data Set**: The installer will automatically list all Google Cloud Platform projects you have access to and, within each project, all available GA4 BigQuery export tables. Choose your Google Cloud project and GA4 BigQuery export table from the dropdown menus, then click "Install GA4Dataform".
 
@@ -37,7 +47,7 @@ If you have multiple BigQuery export projects, ensure you select the correct one
 
 ---
 
-## Configure and Run GA4Dataform
+### Configure and Run GA4Dataform
 
 Once the installation is complete, you'll see a success message and two optional next steps, shown as toggle buttons:
 - The first option allows GA4Dataform to process your entire GA4 historical data set. It provides an estimate of the associated cost.
@@ -57,7 +67,7 @@ Once installed, GA4Dataform is fully customizable. You can adjust the schedule w
 
 ---
 
-## You're Done!
+### You're Done!
 
 GA4Dataform is now fully installed and operational. Here’s a summary of what we have accomplished:
 1. Active your GA4Dataform licence key.
@@ -69,7 +79,7 @@ GA4Dataform is now fully installed and operational. Here’s a summary of what w
 
 ---
 
-## Check Configuration and Output
+### Check Configuration and Output
 
 1. **Data Output**: Processed GA4 data will appear directly in BigQuery in tables such as `ga4_events` and `ga4_sessions`.
 
