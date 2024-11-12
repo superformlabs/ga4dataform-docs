@@ -1,0 +1,51 @@
+name: Build and Deploy to ga4dataform
+
+on:
+  push:
+    branches:
+      - main  # or the branch you want to monitor
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout ga4dataform-docs repo
+        uses: actions/checkout@v3
+        with:
+          repository: superformlabs/ga4dataform-docs
+          token: ${{ secrets.BUILD_WORKFLOW }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # specify the node version you need
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build project
+        run: yarn build
+
+      - name: Checkout ga4dataform repo
+        uses: actions/checkout@v3
+        with:
+          repository: superformlabs/ga4dataform
+          path: ga4dataform
+          token: ${{ secrets.BUILD_WORKFLOW }}
+
+      - name: Copy build files
+        run: |
+          rm -rf ga4dataform/build
+          cp -R build/ ga4dataform/build/
+
+      - name: Commit and push changes to ga4dataform
+        working-directory: ga4dataform
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add .
+          git commit -m "Automated update from ga4dataform-docs"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.BUILD_WORKFLOW }}
