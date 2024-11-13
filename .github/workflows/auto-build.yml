@@ -30,7 +30,7 @@ jobs:
         run: yarn build
 
       - name: Log contents of build directory
-        working-directory: ga4dataform-docs
+        working-directory: ga4dataform
         run: |
           echo "Contents of build directory:"
           ls -la build
