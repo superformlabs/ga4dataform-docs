@@ -30,9 +30,10 @@ jobs:
         run: yarn build
 
       - name: Log contents of build directory
+        working-directory: ga4dataform-docs
         run: |
-          echo "Contents of the entire repository:"
-          ls -laR
+          echo "Contents of build directory:"
+          ls -la build
 
       - name: Checkout ga4dataform repo
         uses: actions/checkout@v3
@@ -42,8 +43,9 @@ jobs:
           token: ${{ secrets.BUILD_WORKFLOW }}
 
       - name: Copy all files and overwrite
+        working-directory: ga4dataform
         run: |
-          cp -R ga4dataform/build/. ga4dataform/
+          cp -R build/. . 
 
       - name: Commit and push changes to ga4dataform
         run: |
