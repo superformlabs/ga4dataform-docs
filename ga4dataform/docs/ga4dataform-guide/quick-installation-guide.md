@@ -9,7 +9,7 @@ slug: /quick-installation-guide
 
 ## Walkthrough video
 
-<iframe width="640" height="360" src="https://www.loom.com/embed/684fa45119014ec8898e98b604328d48?sid=e2919baf-9ac7-4c21-97d6-7327e185ebdf" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/KmtdmlExIZM?si=WUbJplbV-tLHVOJU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 

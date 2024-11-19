@@ -15,7 +15,6 @@
 const sidebars = {
   tutorialSidebar: [
     'overview',
-    'faq',
     {
       type: 'category',
       label: 'GA4 Dataform Documentation',
@@ -37,8 +36,11 @@ const sidebars = {
       items: [
         'ga4dataform-guide/quick-installation-guide',
         'ga4dataform-guide/post-installation-guide',
+        'ga4dataform-guide/gcp-configuration-guide',
       ],
     },
+    'faq',
+    'troubleshooting',
   ],
 };
 
