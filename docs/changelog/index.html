@@ -7,7 +7,7 @@
 
 <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-MRWXP5MT",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
 <script src="https://www.googletagmanager.com/gtm.js?id=GTM-MRWXP5MT" async></script><link rel="stylesheet" href="/assets/css/styles.ef17b1c4.css">
-<script src="/assets/js/runtime~main.44198916.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.071cebe1.js" defer="defer"></script>
 <script src="/assets/js/main.9230a971.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -55,34 +55,22 @@
 <p>This change brings the installer in line with Google Cloud security best practices and Dataform Strict Act-As mode requirements.</p>
 <hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="released">Released<a href="#released" class="hash-link" aria-label="Direct link to Released" title="Direct link to Released">​</a></h2>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v205---2025-12-18">💎 [Premium v2.0.5] - 2025-12-18<a href="#-premium-v205---2025-12-18" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.5] - 2025-12-18" title="Direct link to 💎 [Premium v2.0.5] - 2025-12-18">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v211---2026-02-17">💎 [Premium v2.1.1] - 2026-02-17<a href="#-premium-v211---2026-02-17" class="hash-link" aria-label="Direct link to 💎 [Premium v2.1.1] - 2026-02-17" title="Direct link to 💎 [Premium v2.1.1] - 2026-02-17">​</a></h3>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes">Schema Changes<a href="#schema-changes" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
-<p>Updating to this version will require some tables to be fully rebuild because of a addition of new columns</p>
-<ul>
-<li><code>int_ga4_sessions</code> and <code>ga4_sessions</code> with new <code>first_user_id</code> column</li>
-<li><code>int_ga4_transactions</code> and <code>ga4_transactions</code> with new <code>property_id</code> column</li>
-<li><code>ga4_events</code> with new records in event_params</li>
-</ul>
+<p>Updating to this version will add <code>property_name</code> to all output tables. No full rebuild required thanks to <code>onSchemaChange: EXTEND</code>.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added">🚀 Added<a href="#-added" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
-<li><code>unique_search term</code>, <code>gad_campaingid</code>, <code>gad_source</code> as standard event params</li>
-<li><code>gclsrc</code> as param to check to classify as Google</li>
-<li><code>first_user_id</code> in <code>int_ga4_sessions</code> and <code>ga4_sessions</code></li>
-<li><code>property_id</code> as column in <code>int_ga4_transactions</code> and <code>ga4_transactions</code></li>
-<li><code>is_multiday_session</code> column : Flag indicating if the session has events across more than one day</li>
-</ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed">🐛 Fixed<a href="#-fixed" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
-<ul>
-<li>Add missing column documentation fields</li>
+<li><strong>Cross-project multi-property</strong>: <code>EXTRA_GA4_DATASETS_ARRAY</code> now supports datasets in different GCP projects and custom property names (string, dot-notation, or object format)</li>
+<li><strong><code>property_name</code> column</strong> across <code>ga4_events</code>, <code>ga4_sessions</code>, and <code>ga4_transactions</code> — companion to <code>property_id</code>, shows the custom name if configured</li>
+<li><strong><code>CLUSTER_BY</code> config</strong> (Premium): prepend custom clustering columns before fixed trailing columns on <code>ga4_events</code> and <code>ga4_sessions</code></li>
+<li><strong><code>onSchemaChange: EXTEND</code></strong> on all intermediate and output tables for automatic schema evolution</li>
 </ul>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed">Changed<a href="#changed" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
 <ul>
-<li>Standardized SQL style</li>
-<li>Renaming modules and tables</li>
-<li>Changed directory structure and main config file moved</li>
+<li>Removed &quot;same GCP project&quot; requirement for multi-property setups</li>
 </ul>
 <hr>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1190---2025-12-18">🧰 🤝 [Core v1.19.0] - 2025-12-18<a href="#--core-v1190---2025-12-18" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.19.0] - 2025-12-18" title="Direct link to 🧰 🤝 [Core v1.19.0] - 2025-12-18">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v205---2025-12-18">💎 [Premium v2.0.5] - 2025-12-18<a href="#-premium-v205---2025-12-18" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.5] - 2025-12-18" title="Direct link to 💎 [Premium v2.0.5] - 2025-12-18">​</a></h3>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-1">Schema Changes<a href="#schema-changes-1" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <p>Updating to this version will require some tables to be fully rebuild because of a addition of new columns</p>
 <ul>
@@ -98,7 +86,7 @@
 <li><code>property_id</code> as column in <code>int_ga4_transactions</code> and <code>ga4_transactions</code></li>
 <li><code>is_multiday_session</code> column : Flag indicating if the session has events across more than one day</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-1">🐛 Fixed<a href="#-fixed-1" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed">🐛 Fixed<a href="#-fixed" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Add missing column documentation fields</li>
 </ul>
@@ -109,16 +97,43 @@
 <li>Changed directory structure and main config file moved</li>
 </ul>
 <hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1190---2025-12-18">🧰 🤝 [Core v1.19.0] - 2025-12-18<a href="#--core-v1190---2025-12-18" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.19.0] - 2025-12-18" title="Direct link to 🧰 🤝 [Core v1.19.0] - 2025-12-18">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-2">Schema Changes<a href="#schema-changes-2" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<p>Updating to this version will require some tables to be fully rebuild because of a addition of new columns</p>
+<ul>
+<li><code>int_ga4_sessions</code> and <code>ga4_sessions</code> with new <code>first_user_id</code> column</li>
+<li><code>int_ga4_transactions</code> and <code>ga4_transactions</code> with new <code>property_id</code> column</li>
+<li><code>ga4_events</code> with new records in event_params</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-2">🚀 Added<a href="#-added-2" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<ul>
+<li><code>unique_search term</code>, <code>gad_campaingid</code>, <code>gad_source</code> as standard event params</li>
+<li><code>gclsrc</code> as param to check to classify as Google</li>
+<li><code>first_user_id</code> in <code>int_ga4_sessions</code> and <code>ga4_sessions</code></li>
+<li><code>property_id</code> as column in <code>int_ga4_transactions</code> and <code>ga4_transactions</code></li>
+<li><code>is_multiday_session</code> column : Flag indicating if the session has events across more than one day</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-1">🐛 Fixed<a href="#-fixed-1" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<ul>
+<li>Add missing column documentation fields</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-2">Changed<a href="#changed-2" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
+<ul>
+<li>Standardized SQL style</li>
+<li>Renaming modules and tables</li>
+<li>Changed directory structure and main config file moved</li>
+</ul>
+<hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v204">💎 [Premium v2.0.4]<a href="#-premium-v204" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.4]" title="Direct link to 💎 [Premium v2.0.4]">​</a></h3>
 <p>2025-11-11</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-2">🚀 Added<a href="#-added-2" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-3">🚀 Added<a href="#-added-3" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Custom Channel Groupings</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v203">💎 [Premium v2.0.3]<a href="#-premium-v203" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.3]" title="Direct link to 💎 [Premium v2.0.3]">​</a></h3>
 <p>2025-11-06</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-3">🚀 Added<a href="#-added-3" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-4">🚀 Added<a href="#-added-4" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Multi-property support</li>
 <li>Google Ads module</li>
@@ -126,7 +141,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v202">💎 [Premium v2.0.2]<a href="#-premium-v202" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.2]" title="Direct link to 💎 [Premium v2.0.2]">​</a></h3>
 <p>2025-10-23</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-4">🚀 Added<a href="#-added-4" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-5">🚀 Added<a href="#-added-5" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Extend custom session-level parameter filtering options</li>
 </ul>
@@ -140,7 +155,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v200">💎 [Premium v2.0.0]<a href="#-premium-v200" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.0]" title="Direct link to 💎 [Premium v2.0.0]">​</a></h3>
 <p>2025-09-22</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-5">🚀 Added<a href="#-added-5" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-6">🚀 Added<a href="#-added-6" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>User stitching</li>
 <li>Support for using &#x27;intraday&#x27; and &#x27;fresh&#x27; tables</li>
@@ -154,7 +169,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1180">🧰 🤝 [Core v1.18.0]<a href="#--core-v1180" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.18.0]" title="Direct link to 🧰 🤝 [Core v1.18.0]">​</a></h3>
 <p>2025-08-27</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-6">🚀 Added<a href="#-added-6" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-7">🚀 Added<a href="#-added-7" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>AI referrers added to <code>source_categories.json</code> for improved default channel grouping logic.</li>
 <li>Default channel grouping in <code>int_ga4_sessions</code>now matches the source categories with <code>LIKE</code> operator for enhanced pattern matching.</li>
@@ -169,18 +184,18 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1170">🧰 🤝 [Core v1.17.0]<a href="#--core-v1170" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.17.0]" title="Direct link to 🧰 🤝 [Core v1.17.0]">​</a></h3>
 <p>2025-05-13</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-7">🚀 Added<a href="#-added-7" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-8">🚀 Added<a href="#-added-8" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Labeling Tables and Jobs. 5 labels categories are availble: <em>Operation</em>, <em>Brand</em>, <em>Licence type</em>, <em>Package version</em>, <em>Tool</em>.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-2">Changed<a href="#changed-2" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-3">Changed<a href="#changed-3" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
 <ul>
 <li>Assertions set to <code>false</code> by default.</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️--installer">🛠️  [Installer]<a href="#️--installer" class="hash-link" aria-label="Direct link to 🛠️  [Installer]" title="Direct link to 🛠️  [Installer]">​</a></h3>
 <p>2025-05-13</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-8">🚀 Added<a href="#-added-8" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-9">🚀 Added<a href="#-added-9" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Installer is now displaying Licence type, installer and models version.</li>
 <li>Backfilling job run from installer is now tracked with specific label <code>operation: backfilling</code>.</li>
@@ -188,7 +203,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1160">🧰 🤝 [Core v1.16.0]<a href="#--core-v1160" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.16.0]" title="Direct link to 🧰 🤝 [Core v1.16.0]">​</a></h3>
 <p>2025-04-09</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-9">🚀 Added<a href="#-added-9" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-10">🚀 Added<a href="#-added-10" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Bluesky referrals are now classified as <code>Organic Social</code> in the default channel group.</li>
 <li>“Organic AI” added as new default channel group. Most common LLM referrers are added to this group. This feature can be enabled/disabled using the config option <code>EXTRA_CHANNEL_GROUPS</code>.</li>
@@ -212,14 +227,14 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️--installer-1">🛠️  [Installer]<a href="#️--installer-1" class="hash-link" aria-label="Direct link to 🛠️  [Installer]" title="Direct link to 🛠️  [Installer]">​</a></h3>
 <p>2025-02-05</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-10">🚀 Added<a href="#-added-10" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-11">🚀 Added<a href="#-added-11" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Added support for more than 50 datasets</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1130">🧰 🤝 [Core v1.13.0]<a href="#--core-v1130" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.13.0]" title="Direct link to 🧰 🤝 [Core v1.13.0]">​</a></h3>
 <p>2025-01-28</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-3">Changed<a href="#changed-3" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-4">Changed<a href="#changed-4" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
 <ul>
 <li>Updated <code>generateFilterTypeFromListSQL</code> function to properly handle NULL values.</li>
 <li>Now uses <code>coalesce(column, &quot;&quot;)</code> to avoid NULL-related filtering issues.</li>
@@ -227,7 +242,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1120">🧰 🤝 [Core v1.12.0]<a href="#--core-v1120" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.12.0]" title="Direct link to 🧰 🤝 [Core v1.12.0]">​</a></h3>
 <p>2025-01-23</p>
-<h5 class="anchor anchorWithStickyNavbar_LWe7" id="changed-4">Changed<a href="#changed-4" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h5>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="changed-5">Changed<a href="#changed-5" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h5>
 <ul>
 <li>Excluded &quot;fresh&quot; tables from exports in <code>ga4_events.sqlx</code>.</li>
 <li>Ensures that temporary fresh tables do not interfere with data processing.</li>
@@ -235,14 +250,14 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-installer-1">🛠️ [Installer]<a href="#️-installer-1" class="hash-link" aria-label="Direct link to 🛠️ [Installer]" title="Direct link to 🛠️ [Installer]">​</a></h3>
 <p>2025-01-23</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-11">🚀 Added<a href="#-added-11" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-12">🚀 Added<a href="#-added-12" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Added user menu with logout</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1100">🧰 🤝 [Core v1.10.0]<a href="#--core-v1100" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.10.0]" title="Direct link to 🧰 🤝 [Core v1.10.0]">​</a></h3>
 <p>2024-12-19</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-12">🚀 Added<a href="#-added-12" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-13">🚀 Added<a href="#-added-13" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Initial commit introducing <code>ga4_transactions</code> model.</li>
 <li>Documentation formatting and structure for <code>ga4_transactions</code> columns.</li>
@@ -258,7 +273,7 @@
 <ul>
 <li>Improved logic for properties without &quot;final&quot; days, ensuring they now increment correctly in sessions, transactions, and events models.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-5">Changed<a href="#changed-5" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-6">Changed<a href="#changed-6" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
 <ul>
 <li>Adjusted schema definitions for <code>ga4_transactions</code> to improve refund tracking.</li>
 <li>Updated documentation to reflect the schema modifications.</li>
@@ -272,7 +287,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v160">🧰 🤝 [Core v1.6.0]<a href="#--core-v160" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.6.0]" title="Direct link to 🧰 🤝 [Core v1.6.0]">​</a></h3>
 <p>2024-10-24</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-6">Changed<a href="#changed-6" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-7">Changed<a href="#changed-7" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
 <ul>
 <li>Streamlined data partitioning to improve performance.</li>
 <li>Introduced detailed column documentation for <code>ga4_events</code> and <code>ga4_sessions</code>.</li>
@@ -281,21 +296,21 @@
 <ul>
 <li>Removed <code>stream_id</code> from <code>clusterBy</code> fields.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-7">Changed<a href="#changed-7" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-8">Changed<a href="#changed-8" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
 <ul>
 <li>Removed non-intraday columns from <code>session_traffic_source_last_click</code> struct.</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-installer-2">🛠️ [Installer]<a href="#️-installer-2" class="hash-link" aria-label="Direct link to 🛠️ [Installer]" title="Direct link to 🛠️ [Installer]">​</a></h3>
 <p>2024-10-24</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-13">🚀 Added<a href="#-added-13" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-14">🚀 Added<a href="#-added-14" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Installer version</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v150">🧰 🤝 [Core v1.5.0]<a href="#--core-v150" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.5.0]" title="Direct link to 🧰 🤝 [Core v1.5.0]">​</a></h3>
 <p>2024-10-16</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-14">🚀 Added<a href="#-added-14" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-15">🚀 Added<a href="#-added-15" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Introduced <code>exit_content_group</code> to the <code>exit_page</code> struct.</li>
 <li>Added all <code>click_ids</code> to last non-direct session attribution logic.</li>
@@ -307,7 +322,7 @@
 <ul>
 <li>Updated default channel grouping logic to replace <code>NULL</code> values with &quot;Direct&quot;.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-8">Changed<a href="#changed-8" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-9">Changed<a href="#changed-9" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
 <ul>
 <li>Improves content categorization for session exits.</li>
 <li>Refactored configuration settings to be more user-friendly.</li>
@@ -320,7 +335,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️--installer-2">🛠️  [Installer]<a href="#️--installer-2" class="hash-link" aria-label="Direct link to 🛠️  [Installer]" title="Direct link to 🛠️  [Installer]">​</a></h3>
 <p>2024-10-07</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-15">🚀 Added<a href="#-added-15" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-16">🚀 Added<a href="#-added-16" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Added popup for checking package</li>
 </ul>
@@ -358,7 +373,7 @@
 <li>Corrected incremental processing logic by ensuring <code>table_suffix</code> is treated as a date where necessary.</li>
 <li>Corrected typo in variable name (<code>EVENTS_TO_EXLUDE</code> → <code>EVENTS_TO_EXCLUDE</code>).</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-16">🚀 Added<a href="#-added-16" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-17">🚀 Added<a href="#-added-17" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Implemented detection of Measurement Protocol (MP) hits.</li>
 <li>Introduced <code>session_duration_s</code> to track session lengths.</li>
@@ -394,7 +409,7 @@
 <li>Added exclusion and inclusion lists for hostname filtering in event processing.</li>
 <li>Implemented <code>is_final</code> logic for incremental processing.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-9">Changed<a href="#changed-9" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="changed-10">Changed<a href="#changed-10" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h4>
 <ul>
 <li>Modified incremental logic to correctly process events without session identifiers.</li>
 <li>Refactored session attribution logic to ensure correct traffic source tracking.</li>
@@ -447,20 +462,20 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-installer-3">🛠️ [Installer]<a href="#️-installer-3" class="hash-link" aria-label="Direct link to 🛠️ [Installer]" title="Direct link to 🛠️ [Installer]">​</a></h3>
 <p>2024-09-01</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-17">🚀 Added<a href="#-added-17" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-18">🚀 Added<a href="#-added-18" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Added link to doc</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️--installer-3">🛠️  [Installer]<a href="#️--installer-3" class="hash-link" aria-label="Direct link to 🛠️  [Installer]" title="Direct link to 🛠️  [Installer]">​</a></h3>
 <p>2024-08-01</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-18">🚀 Added<a href="#-added-18" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-19">🚀 Added<a href="#-added-19" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Added check repository state during install process</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v0">🧰 🤝 [Core v0]<a href="#--core-v0" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v0]" title="Direct link to 🧰 🤝 [Core v0]">​</a></h3>
 <p>2024-03-10</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-init-by-artem-korneev">🌟 Init by Artem Korneev<a href="#-init-by-artem-korneev" class="hash-link" aria-label="Direct link to 🌟 Init by Artem Korneev" title="Direct link to 🌟 Init by Artem Korneev">​</a></h4></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/&lt;your-org&gt;/&lt;your-repo&gt;/edit/main/docs/docs/changelog.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/support-contact"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Support &amp; Contact</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/resources"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Resources</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#unreleased" class="table-of-contents__link toc-highlight">Unreleased</a><ul><li><a href="#-premium" class="table-of-contents__link toc-highlight">💎 Premium</a></li><li><a href="#-core" class="table-of-contents__link toc-highlight">🧰 Core</a></li><li><a href="#-community" class="table-of-contents__link toc-highlight">🤝 Community</a></li><li><a href="#️-installer" class="table-of-contents__link toc-highlight">🛠️ Installer</a></li></ul></li><li><a href="#released" class="table-of-contents__link toc-highlight">Released</a><ul><li><a href="#-premium-v205---2025-12-18" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.5] - 2025-12-18</a></li><li><a href="#--core-v1190---2025-12-18" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.19.0] - 2025-12-18</a></li><li><a href="#-premium-v204" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.4]</a></li><li><a href="#-premium-v203" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.3]</a></li><li><a href="#-premium-v202" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.2]</a></li><li><a href="#-premium-v201" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.1]</a></li><li><a href="#-premium-v200" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.0]</a></li><li><a href="#--core-v1180" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.18.0]</a></li><li><a href="#--core-v1170" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.17.0]</a></li><li><a href="#️--installer" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1160" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.16.0]</a></li><li><a href="#--core-v1150" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.15.0]</a></li><li><a href="#--core-v1140" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.14.0]</a></li><li><a href="#️--installer-1" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1130" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.13.0]</a></li><li><a href="#--core-v1120" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.12.0]</a></li><li><a href="#️-installer-1" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#--core-v1100" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.10.0]</a></li><li><a href="#--core-v160" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.6.0]</a></li><li><a href="#️-installer-2" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#--core-v150" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.5.0]</a></li><li><a href="#️--installer-2" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1]</a></li><li><a href="#️-installer-3" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#️--installer-3" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v0" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v0]</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/quick-start-guide">Quick Start Guide</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/references">References</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/guides">Guides</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/data-dictionary">Data Dictionary</a></li></ul></div><div class="col footer__col"><div class="footer__title">Legal</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/privacy-policy">Privacy Policy</a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://ga4dataform.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">GA4Dataform<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Superform Labs. Built with Docusaurus.</div></div></div></footer></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-init-by-artem-korneev">🌟 Init by Artem Korneev<a href="#-init-by-artem-korneev" class="hash-link" aria-label="Direct link to 🌟 Init by Artem Korneev" title="Direct link to 🌟 Init by Artem Korneev">​</a></h4></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/&lt;your-org&gt;/&lt;your-repo&gt;/edit/main/docs/docs/changelog.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/support-contact"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Support &amp; Contact</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/resources"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Resources</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#unreleased" class="table-of-contents__link toc-highlight">Unreleased</a><ul><li><a href="#-premium" class="table-of-contents__link toc-highlight">💎 Premium</a></li><li><a href="#-core" class="table-of-contents__link toc-highlight">🧰 Core</a></li><li><a href="#-community" class="table-of-contents__link toc-highlight">🤝 Community</a></li><li><a href="#️-installer" class="table-of-contents__link toc-highlight">🛠️ Installer</a></li></ul></li><li><a href="#released" class="table-of-contents__link toc-highlight">Released</a><ul><li><a href="#-premium-v211---2026-02-17" class="table-of-contents__link toc-highlight">💎 [Premium v2.1.1] - 2026-02-17</a></li><li><a href="#-premium-v205---2025-12-18" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.5] - 2025-12-18</a></li><li><a href="#--core-v1190---2025-12-18" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.19.0] - 2025-12-18</a></li><li><a href="#-premium-v204" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.4]</a></li><li><a href="#-premium-v203" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.3]</a></li><li><a href="#-premium-v202" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.2]</a></li><li><a href="#-premium-v201" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.1]</a></li><li><a href="#-premium-v200" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.0]</a></li><li><a href="#--core-v1180" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.18.0]</a></li><li><a href="#--core-v1170" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.17.0]</a></li><li><a href="#️--installer" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1160" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.16.0]</a></li><li><a href="#--core-v1150" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.15.0]</a></li><li><a href="#--core-v1140" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.14.0]</a></li><li><a href="#️--installer-1" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1130" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.13.0]</a></li><li><a href="#--core-v1120" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.12.0]</a></li><li><a href="#️-installer-1" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#--core-v1100" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.10.0]</a></li><li><a href="#--core-v160" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.6.0]</a></li><li><a href="#️-installer-2" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#--core-v150" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.5.0]</a></li><li><a href="#️--installer-2" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1]</a></li><li><a href="#️-installer-3" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#️--installer-3" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v0" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v0]</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/quick-start-guide">Quick Start Guide</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/references">References</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/guides">Guides</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/data-dictionary">Data Dictionary</a></li></ul></div><div class="col footer__col"><div class="footer__title">Legal</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/privacy-policy">Privacy Policy</a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://ga4dataform.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">GA4Dataform<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Superform Labs. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>

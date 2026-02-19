@@ -7,7 +7,7 @@
 
 <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-MRWXP5MT",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
 <script src="https://www.googletagmanager.com/gtm.js?id=GTM-MRWXP5MT" async></script><link rel="stylesheet" href="/assets/css/styles.ef17b1c4.css">
-<script src="/assets/js/runtime~main.44198916.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.071cebe1.js" defer="defer"></script>
 <script src="/assets/js/main.9230a971.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -17,7 +17,7 @@
 <li>Flattened</li>
 <li>Incremental build (delete + insert)</li>
 <li>Partitioned by <code>event_date</code></li>
-<li>Clustered by <code>event_name</code>, <code>session_id</code></li>
+<li>Clustered by <code>event_name</code>, <code>session_id</code> (customizable with <a href="/docs/configuration-variables#cluster-by"><code>CLUSTER_BY</code></a>)</li>
 <li><code>event_id</code> is generated with <code>farm_fingerprint()</code> over: event_name, event_timestamp, user_pseudo_id, GA session ID, batch IDs, transaction ID, engagement time, etc.</li>
 <li>An <code>is_final</code> flag marks rows that are older than 3 days (72h)</li>
 <li>Reads from <code>analytics_&lt;property_id&gt;.events_*</code> and optionally <code>fresh_</code> / <code>intraday_</code> shards, depending on config<!-- -->
@@ -25,6 +25,7 @@
 <li>A <code>table_suffix</code> column keeps the original shard name.</li>
 </ul>
 </li>
+<li><code>property_id</code> and <code>property_name</code> columns to identify which GA4 property each event belongs to (useful with multi-property setups)</li>
 <li><code>is_measurement_protocol_hit</code> column to flag MP hits.</li>
 <li><code>(not set)</code> transaction IDs are converted to <code>NULL</code>.</li>
 <li>Filter out Audience Events.</li>

@@ -7,7 +7,7 @@
 
 <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-MRWXP5MT",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
 <script src="https://www.googletagmanager.com/gtm.js?id=GTM-MRWXP5MT" async></script><link rel="stylesheet" href="/assets/css/styles.ef17b1c4.css">
-<script src="/assets/js/runtime~main.44198916.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.071cebe1.js" defer="defer"></script>
 <script src="/assets/js/main.9230a971.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -16,7 +16,7 @@
 <li>One row per session</li>
 <li>Incremental build (delete + insert)</li>
 <li>Partitioned by <code>session_date</code></li>
-<li>Clustered by <code>session_id</code></li>
+<li>Clustered by <code>session_id</code> (customizable with <a href="/docs/configuration-variables#cluster-by"><code>CLUSTER_BY</code></a>)</li>
 <li><a href="/docs/user-stitching">User Stitching</a></li>
 <li>Aggregated metrics: events, page view, purchase revenue, transactions, select items etc...</li>
 <li>Traffic source logic (including <em>last non-direct</em> attribution)</li>
@@ -39,6 +39,12 @@
 </li>
 <li>
 <p><code>USER_STITCHING</code> - See <a href="/docs/user-stitching">User Stitching</a></p>
+</li>
+<li>
+<p><code>EXTRA_GA4_DATASETS_ARRAY</code> – when configured, adds <code>property_id</code> and <code>property_name</code> columns</p>
+</li>
+<li>
+<p><code>CLUSTER_BY</code> – prepend custom clustering columns</p>
 </li>
 <li>
 <p><code>LAST_NON_DIRECT_LOOKBACK_DAYS</code></p>
