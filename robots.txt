@@ -1,0 +1,5 @@
+# robots.txt for docs.ga4dataform.com
+User-agent: *
+Allow: /
+
+Sitemap: https://docs.ga4dataform.com/sitemap.xml
