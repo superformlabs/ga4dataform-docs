@@ -7,7 +7,7 @@
 
 <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-MRWXP5MT",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
 <script src="https://www.googletagmanager.com/gtm.js?id=GTM-MRWXP5MT" async></script><link rel="stylesheet" href="/assets/css/styles.6248a516.css">
-<script src="/assets/js/runtime~main.8530c351.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.aaa66ad4.js" defer="defer"></script>
 <script src="/assets/js/main.24a78d02.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -53,6 +53,8 @@
 <li>Module dependency resolution when a module config is disabled</li>
 <li><code>ref()</code> resolution for disabled modules</li>
 </ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes">Schema Changes<a href="#schema-changes" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<p>Updating to this version adds <code>property_id</code> and <code>property_name</code> columns to <code>ga4_parameter_detection_report_daily</code> via <code>onSchemaChange: EXTEND</code>. No full rebuild is required, but if you need historical values for these fields you will need to rebuild the table.</p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v212">💎 [Premium v2.1.2]<a href="#-premium-v212" class="hash-link" aria-label="Direct link to 💎 [Premium v2.1.2]" title="Direct link to 💎 [Premium v2.1.2]">​</a></h3>
 <p>2026-03-09</p>
@@ -91,7 +93,7 @@
 <p>This change brings the installer in line with Google Cloud security best practices and Dataform Strict Act-As mode requirements.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v211">💎 [Premium v2.1.1]<a href="#-premium-v211" class="hash-link" aria-label="Direct link to 💎 [Premium v2.1.1]" title="Direct link to 💎 [Premium v2.1.1]">​</a></h3>
 <p>2026-02-17</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes">Schema Changes<a href="#schema-changes" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-1">Schema Changes<a href="#schema-changes-1" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <p>Updating to this version will add <code>property_name</code> to all output tables. No full rebuild required thanks to <code>onSchemaChange: EXTEND</code>.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-3">🚀 Added<a href="#-added-3" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
@@ -107,7 +109,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v205">💎 [Premium v2.0.5]<a href="#-premium-v205" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.5]" title="Direct link to 💎 [Premium v2.0.5]">​</a></h3>
 <p>2025-12-18</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-1">Schema Changes<a href="#schema-changes-1" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-2">Schema Changes<a href="#schema-changes-2" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <p>Updating to this version will require some tables to be fully rebuild because of a addition of new columns</p>
 <ul>
 <li><code>int_ga4_sessions</code> and <code>ga4_sessions</code> with new <code>first_user_id</code> column</li>
@@ -135,7 +137,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1190">🧰 🤝 [Core v1.19.0]<a href="#--core-v1190" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.19.0]" title="Direct link to 🧰 🤝 [Core v1.19.0]">​</a></h3>
 <p>2025-12-18</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-2">Schema Changes<a href="#schema-changes-2" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-3">Schema Changes<a href="#schema-changes-3" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <p>Updating to this version will require some tables to be fully rebuild because of a addition of new columns</p>
 <ul>
 <li><code>int_ga4_sessions</code> and <code>ga4_sessions</code> with new <code>first_user_id</code> column</li>
