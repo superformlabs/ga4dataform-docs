@@ -8,7 +8,7 @@
 
 <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-MRWXP5MT",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
 <script src="https://www.googletagmanager.com/gtm.js?id=GTM-MRWXP5MT" async></script><link rel="stylesheet" href="/assets/css/styles.6248a516.css">
-<script src="/assets/js/runtime~main.5300b619.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.4cdb4cc9.js" defer="defer"></script>
 <script src="/assets/js/main.c0f2ffff.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -29,15 +29,35 @@
 </ul>
 <hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="released">Released<a href="#released" class="hash-link" aria-label="Direct link to Released" title="Direct link to Released">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-installer-v227">🛠️ [Installer v2.2.7]<a href="#️-installer-v227" class="hash-link" aria-label="Direct link to 🛠️ [Installer v2.2.7]" title="Direct link to 🛠️ [Installer v2.2.7]">​</a></h3>
+<p>2026-06-07</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added">🚀 Added<a href="#-added" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<ul>
+<li><strong>VPC Service Controls warning</strong> - the installer now detects when VPC Service Controls are active on the project and surfaces a warning during setup, so you can resolve access restrictions before they cause silent failures</li>
+<li><strong>Billing warning</strong> - the installer now surfaces a warning when billing configuration may affect the deployment, reducing ambiguity during first-time setups</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v225">💎 [Premium v2.2.5]<a href="#-premium-v225" class="hash-link" aria-label="Direct link to 💎 [Premium v2.2.5]" title="Direct link to 💎 [Premium v2.2.5]">​</a></h3>
+<p>2026-06-07</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-1">🚀 Added<a href="#-added-1" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<ul>
+<li><strong>Brave classified as a search engine</strong> in source categories — sessions originating from Brave Search are now correctly attributed to Organic Search in the default channel grouping</li>
+<li><strong>Improved AI referrer classification</strong> — ChatGPT and Perplexity are now classified more accurately in the default channel grouping, reducing misattribution to direct or referral</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed">🐛 Fixed<a href="#-fixed" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<ul>
+<li><strong><code>fixed_traffic_source</code> attribution fix</strong> — the GA4 BigQuery export can deliver hits out of order: a hit with an earlier timestamp may arrive in a later batch and therefore lack <code>collected_traffic_source</code>. The previous logic selected the earliest hit, which could be one of those under-informed hits, causing sessions to show incorrect or missing traffic source data. Source derivation now selects the hit with the most information, and cases where timestamp and batch ordering disagree are handled correctly. Multi-source sessions now derive the last source only from hits that have <code>collected_traffic_source</code> set. This resolves incorrect Referral classification for some Organic sources, including gclid traffic without a campaign appearing as Google Referral.</li>
+</ul>
+<hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v224">💎 [Premium v2.2.4]<a href="#-premium-v224" class="hash-link" aria-label="Direct link to 💎 [Premium v2.2.4]" title="Direct link to 💎 [Premium v2.2.4]">​</a></h3>
 <p>2026-04-28</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added">🚀 Added<a href="#-added" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-2">🚀 Added<a href="#-added-2" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li><strong><code>all_conversions</code> and <code>all_conversions_value</code></strong> in the Google Ads module - aggregate of <code>metrics_conversions</code> and <code>metrics_conversions_value</code> across all configured <code>conversion_action_names</code>, added to <code>google_ads_campaign_report</code>, <code>google_ads_ad_group_report</code>, <code>google_ads_ad_report</code>, and <code>google_ads_keyword_report</code>. Provides a stable column name for downstream dashboards regardless of which individual conversion actions are configured</li>
 <li><strong><code>addDefault</code> flag for <code>CUSTOM_SESSION_TOTALS</code></strong> in the GA4 module - when <code>true</code>, merges a curated baseline of <code>eventsToCount</code>, <code>uniqueFields</code>, and <code>sumFields</code> (page_view, session_start, ecommerce events, transaction_id, user_id, device.category, page hostname/path, engagement_time_msec, purchase_revenue) with your custom entries (your entries win on <code>renameTo</code>/<code>name</code> collision). Defaults to <code>true</code> for new installs; existing installs without the flag continue to see only their explicitly configured entries</li>
 <li><strong><code>onSchemaChange: EXTEND</code></strong> on <code>google_ads_dim_ad_groups</code>, <code>google_ads_dim_ads</code>, <code>google_ads_dim_keywords</code>, and <code>google_ads_gclids</code> - column additions in future releases no longer require a rebuild</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed">🐛 Fixed<a href="#-fixed" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-1">🐛 Fixed<a href="#-fixed-1" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Apostrophes and other special characters in Google Ads <code>conversion_action_names</code> (e.g. <code>Client&#x27;s Call</code>) now work - conversion action names are wrapped in BigQuery triple-quoted string literals so escaping no longer breaks Dataform&#x27;s compile pipeline</li>
 <li>Clearer error messages for Google Ads misconfigurations - separate, actionable errors when <code>enabled: true</code> but <code>gads_sources</code> is missing/empty/malformed, when <code>conversion_action_names</code> is missing/empty/malformed, and when <code>enabled: false</code> but <code>gads_sources</code> contains entries</li>
@@ -49,7 +69,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-installer-v222">🛠️ [Installer v2.2.2]<a href="#️-installer-v222" class="hash-link" aria-label="Direct link to 🛠️ [Installer v2.2.2]" title="Direct link to 🛠️ [Installer v2.2.2]">​</a></h3>
 <p>2026-04-08</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-1">🚀 Added<a href="#-added-1" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-3">🚀 Added<a href="#-added-3" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li><strong>Automated GA4 Export Trigger</strong> - automatically update your GA4 output tables the moment the GA4 daily events export lands in BigQuery (Premium 💎)</li>
 <li><strong>Email Alerts for Dataform Errors</strong> - get notified by email when a Dataform workflow invocation fails (Premium 💎)</li>
@@ -57,7 +77,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v223">💎 [Premium v2.2.3]<a href="#-premium-v223" class="hash-link" aria-label="Direct link to 💎 [Premium v2.2.3]" title="Direct link to 💎 [Premium v2.2.3]">​</a></h3>
 <p>2026-04-08</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-2">🚀 Added<a href="#-added-2" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-4">🚀 Added<a href="#-added-4" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li><strong>Custom Lineage</strong> (<code>ga4_events_custom</code>, <code>int_ga4_sessions_custom</code>, <code>ga4_sessions_custom</code>) in the GA4 module - inject custom transformation layers between core pipeline tables as views or incremental tables, with automatic routing for all downstream modules</li>
 <li><strong>Reprocessing &amp; Batching</strong> - reprocess specific date ranges without rebuilding entire history, with a batch script (<code>scripts/batch-reprocess.sh</code>) for large backfills that avoids BigQuery&#x27;s 6-hour timeout</li>
@@ -65,7 +85,7 @@
 <li><strong>Multi-property support</strong> in the Parameter Detection module - <code>property_id</code> and <code>property_name</code> columns in all output tables for per-property parameter auditing</li>
 <li><strong><code>paramFilter</code> for Session Totals</strong> - <code>eventsToCount</code>, <code>uniqueFields</code>, and <code>sumFields</code> in <code>CUSTOM_SESSION_TOTALS</code> now support the same <code>paramFilter</code> syntax as <code>CUSTOM_SESSION_PARAMS_ARRAY</code> for conditional aggregation</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-1">🐛 Fixed<a href="#-fixed-1" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-2">🐛 Fixed<a href="#-fixed-2" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li><code>ignore_referrer</code> case sensitivity - now correctly matches GA4&#x27;s lowercase <code>&quot;true&quot;</code> value</li>
 <li>Medium attribution <code>CASE</code> reordering to prevent misclassification</li>
@@ -77,7 +97,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v212">💎 [Premium v2.1.2]<a href="#-premium-v212" class="hash-link" aria-label="Direct link to 💎 [Premium v2.1.2]" title="Direct link to 💎 [Premium v2.1.2]">​</a></h3>
 <p>2026-03-09</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-3">🚀 Added<a href="#-added-3" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-5">🚀 Added<a href="#-added-5" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li><strong>Item list attribution report</strong> (<code>ga4_item_list_attribution_report</code>) in the Item Funnel module - attributes e-commerce funnel metrics to the item list where an item was first or last seen in a session (e.g. &quot;Related Products&quot;, &quot;Homepage Carousel&quot;), with first-touch (<code>metrics_first</code>) and last-touch (<code>metrics_last</code>) attribution models</li>
 </ul>
@@ -114,7 +134,7 @@
 <p>2026-02-17</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-2">Schema Changes<a href="#schema-changes-2" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <p>Updating to this version will add <code>property_name</code> to all output tables. No full rebuild required thanks to <code>onSchemaChange: EXTEND</code>.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-4">🚀 Added<a href="#-added-4" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-6">🚀 Added<a href="#-added-6" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li><strong>Cross-project multi-property</strong>: <code>EXTRA_GA4_DATASETS_ARRAY</code> now supports datasets in different GCP projects and custom property names (string, dot-notation, or object format)</li>
 <li><strong><code>property_name</code> column</strong> across <code>ga4_events</code>, <code>ga4_sessions</code>, and <code>ga4_transactions</code> — companion to <code>property_id</code>, shows the custom name if configured</li>
@@ -135,7 +155,7 @@
 <li><code>int_ga4_transactions</code> and <code>ga4_transactions</code> with new <code>property_id</code> column</li>
 <li><code>ga4_events</code> with new records in event_params</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-5">🚀 Added<a href="#-added-5" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-7">🚀 Added<a href="#-added-7" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li><code>unique_search term</code>, <code>gad_campaingid</code>, <code>gad_source</code> as standard event params</li>
 <li><code>gclsrc</code> as param to check to classify as Google</li>
@@ -143,7 +163,7 @@
 <li><code>property_id</code> as column in <code>int_ga4_transactions</code> and <code>ga4_transactions</code></li>
 <li><code>is_multiday_session</code> column : Flag indicating if the session has events across more than one day</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-2">🐛 Fixed<a href="#-fixed-2" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-3">🐛 Fixed<a href="#-fixed-3" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Add missing column documentation fields</li>
 </ul>
@@ -163,7 +183,7 @@
 <li><code>int_ga4_transactions</code> and <code>ga4_transactions</code> with new <code>property_id</code> column</li>
 <li><code>ga4_events</code> with new records in event_params</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-6">🚀 Added<a href="#-added-6" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-8">🚀 Added<a href="#-added-8" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li><code>unique_search term</code>, <code>gad_campaingid</code>, <code>gad_source</code> as standard event params</li>
 <li><code>gclsrc</code> as param to check to classify as Google</li>
@@ -171,7 +191,7 @@
 <li><code>property_id</code> as column in <code>int_ga4_transactions</code> and <code>ga4_transactions</code></li>
 <li><code>is_multiday_session</code> column : Flag indicating if the session has events across more than one day</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-3">🐛 Fixed<a href="#-fixed-3" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-4">🐛 Fixed<a href="#-fixed-4" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Add missing column documentation fields</li>
 </ul>
@@ -184,14 +204,14 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v204">💎 [Premium v2.0.4]<a href="#-premium-v204" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.4]" title="Direct link to 💎 [Premium v2.0.4]">​</a></h3>
 <p>2025-11-11</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-7">🚀 Added<a href="#-added-7" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-9">🚀 Added<a href="#-added-9" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Custom Channel Groupings</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v203">💎 [Premium v2.0.3]<a href="#-premium-v203" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.3]" title="Direct link to 💎 [Premium v2.0.3]">​</a></h3>
 <p>2025-11-06</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-8">🚀 Added<a href="#-added-8" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-10">🚀 Added<a href="#-added-10" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Multi-property support</li>
 <li>Google Ads module</li>
@@ -199,21 +219,21 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v202">💎 [Premium v2.0.2]<a href="#-premium-v202" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.2]" title="Direct link to 💎 [Premium v2.0.2]">​</a></h3>
 <p>2025-10-23</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-9">🚀 Added<a href="#-added-9" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-11">🚀 Added<a href="#-added-11" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Extend custom session-level parameter filtering options</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v201">💎 [Premium v2.0.1]<a href="#-premium-v201" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.1]" title="Direct link to 💎 [Premium v2.0.1]">​</a></h3>
 <p>2025-10-10</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-4">🐛 Fixed<a href="#-fixed-4" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-5">🐛 Fixed<a href="#-fixed-5" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Superform Labs internal bugfix iteration</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v200">💎 [Premium v2.0.0]<a href="#-premium-v200" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.0]" title="Direct link to 💎 [Premium v2.0.0]">​</a></h3>
 <p>2025-09-22</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-10">🚀 Added<a href="#-added-10" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-12">🚀 Added<a href="#-added-12" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>User stitching</li>
 <li>Support for using &#x27;intraday&#x27; and &#x27;fresh&#x27; tables</li>
@@ -227,12 +247,12 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1180">🧰 🤝 [Core v1.18.0]<a href="#--core-v1180" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.18.0]" title="Direct link to 🧰 🤝 [Core v1.18.0]">​</a></h3>
 <p>2025-08-27</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-11">🚀 Added<a href="#-added-11" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-13">🚀 Added<a href="#-added-13" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>AI referrers added to <code>source_categories.json</code> for improved default channel grouping logic.</li>
 <li>Default channel grouping in <code>int_ga4_sessions</code>now matches the source categories with <code>LIKE</code> operator for enhanced pattern matching.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-5">🐛 Fixed<a href="#-fixed-5" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-6">🐛 Fixed<a href="#-fixed-6" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Added <code>default_config.js</code> warning text + reordered file contents for better readability.</li>
 <li>Updated <code>is_measurement_protocol_hit</code> since MP supports device parameters since 2025-06-11.</li>
@@ -242,7 +262,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1170">🧰 🤝 [Core v1.17.0]<a href="#--core-v1170" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.17.0]" title="Direct link to 🧰 🤝 [Core v1.17.0]">​</a></h3>
 <p>2025-05-13</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-12">🚀 Added<a href="#-added-12" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-14">🚀 Added<a href="#-added-14" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Labeling Tables and Jobs. 5 labels categories are availble: <em>Operation</em>, <em>Brand</em>, <em>Licence type</em>, <em>Package version</em>, <em>Tool</em>.</li>
 </ul>
@@ -253,7 +273,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️--installer">🛠️  [Installer]<a href="#️--installer" class="hash-link" aria-label="Direct link to 🛠️  [Installer]" title="Direct link to 🛠️  [Installer]">​</a></h3>
 <p>2025-05-13</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-13">🚀 Added<a href="#-added-13" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-15">🚀 Added<a href="#-added-15" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Installer is now displaying Licence type, installer and models version.</li>
 <li>Backfilling job run from installer is now tracked with specific label <code>operation: backfilling</code>.</li>
@@ -261,7 +281,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1160">🧰 🤝 [Core v1.16.0]<a href="#--core-v1160" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.16.0]" title="Direct link to 🧰 🤝 [Core v1.16.0]">​</a></h3>
 <p>2025-04-09</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-14">🚀 Added<a href="#-added-14" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-16">🚀 Added<a href="#-added-16" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Bluesky referrals are now classified as <code>Organic Social</code> in the default channel group.</li>
 <li>“Organic AI” added as new default channel group. Most common LLM referrers are added to this group. This feature can be enabled/disabled using the config option <code>EXTRA_CHANNEL_GROUPS</code>.</li>
@@ -269,7 +289,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1150">🧰 🤝 [Core v1.15.0]<a href="#--core-v1150" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.15.0]" title="Direct link to 🧰 🤝 [Core v1.15.0]">​</a></h3>
 <p>2025-03-11</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-6">🐛 Fixed<a href="#-fixed-6" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-7">🐛 Fixed<a href="#-fixed-7" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Replaced <code>---</code> with <code>;</code> while ensuring no duplicate semicolons appear, as the Dataform CLI was unable to handle them correctly.</li>
 <li>Proper handling of sessions spanning midnight in incremental runs. Previously, sessions crossing midnight could result in duplicate session_ids. Multi-day sessions are now correctly appended to the intermediate table and properly deduplicated in the output.</li>
@@ -277,7 +297,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1140">🧰 🤝 [Core v1.14.0]<a href="#--core-v1140" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.14.0]" title="Direct link to 🧰 🤝 [Core v1.14.0]">​</a></h3>
 <p>2025-02-05</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-7">🐛 Fixed<a href="#-fixed-7" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-8">🐛 Fixed<a href="#-fixed-8" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Refactored <code>LOOKBACK_MILLIS</code> to be defined inline instead of a separate variable.</li>
 <li>Removed <code>LAST_NON_DIRECT_LOOKBACK_MILLIS</code> from <code>default_config.js</code>, ensuring calculations use a single inline formula.</li>
@@ -285,7 +305,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️--installer-1">🛠️  [Installer]<a href="#️--installer-1" class="hash-link" aria-label="Direct link to 🛠️  [Installer]" title="Direct link to 🛠️  [Installer]">​</a></h3>
 <p>2025-02-05</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-15">🚀 Added<a href="#-added-15" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-17">🚀 Added<a href="#-added-17" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Added support for more than 50 datasets</li>
 </ul>
@@ -308,14 +328,14 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-installer">🛠️ [Installer]<a href="#️-installer" class="hash-link" aria-label="Direct link to 🛠️ [Installer]" title="Direct link to 🛠️ [Installer]">​</a></h3>
 <p>2025-01-23</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-16">🚀 Added<a href="#-added-16" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-18">🚀 Added<a href="#-added-18" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Added user menu with logout</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1100">🧰 🤝 [Core v1.10.0]<a href="#--core-v1100" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.10.0]" title="Direct link to 🧰 🤝 [Core v1.10.0]">​</a></h3>
 <p>2024-12-19</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-17">🚀 Added<a href="#-added-17" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-19">🚀 Added<a href="#-added-19" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Initial commit introducing <code>ga4_transactions</code> model.</li>
 <li>Documentation formatting and structure for <code>ga4_transactions</code> columns.</li>
@@ -327,7 +347,7 @@
 <li>Additional columns to <code>ga4_sessions</code> and <code>ga4_events</code> tables.</li>
 <li>Introduced <code>platform</code> in session struct for better tracking.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-8">🐛 Fixed<a href="#-fixed-8" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-9">🐛 Fixed<a href="#-fixed-9" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Improved logic for properties without &quot;final&quot; days, ensuring they now increment correctly in sessions, transactions, and events models.</li>
 </ul>
@@ -361,14 +381,14 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-installer-1">🛠️ [Installer]<a href="#️-installer-1" class="hash-link" aria-label="Direct link to 🛠️ [Installer]" title="Direct link to 🛠️ [Installer]">​</a></h3>
 <p>2024-10-24</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-18">🚀 Added<a href="#-added-18" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-20">🚀 Added<a href="#-added-20" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Installer version</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v150">🧰 🤝 [Core v1.5.0]<a href="#--core-v150" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.5.0]" title="Direct link to 🧰 🤝 [Core v1.5.0]">​</a></h3>
 <p>2024-10-16</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-19">🚀 Added<a href="#-added-19" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-21">🚀 Added<a href="#-added-21" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Introduced <code>exit_content_group</code> to the <code>exit_page</code> struct.</li>
 <li>Added all <code>click_ids</code> to last non-direct session attribution logic.</li>
@@ -376,7 +396,7 @@
 <li>Expanded <code>session_traffic_source_last_click</code> struct to include additional ad tracking fields.</li>
 <li>Added <code>publisher</code> struct to store publisher-level ad attributes.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-9">🐛 Fixed<a href="#-fixed-9" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-10">🐛 Fixed<a href="#-fixed-10" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Updated default channel grouping logic to replace <code>NULL</code> values with &quot;Direct&quot;.</li>
 </ul>
@@ -393,14 +413,14 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️--installer-2">🛠️  [Installer]<a href="#️--installer-2" class="hash-link" aria-label="Direct link to 🛠️  [Installer]" title="Direct link to 🛠️  [Installer]">​</a></h3>
 <p>2024-10-07</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-20">🚀 Added<a href="#-added-20" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-22">🚀 Added<a href="#-added-22" class="hash-link" aria-label="Direct link to    🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Added popup for checking package</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1">🧰 🤝 [Core v1]<a href="#--core-v1" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1]" title="Direct link to 🧰 🤝 [Core v1]">​</a></h3>
 <p>2024-09-01</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-10">🐛 Fixed<a href="#-fixed-10" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-11">🐛 Fixed<a href="#-fixed-11" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Resolved an issue with session attribution logic by adjusting lookback window calculations.</li>
 <li>Corrected logic for determining the last non-direct traffic source.</li>
@@ -431,7 +451,7 @@
 <li>Corrected incremental processing logic by ensuring <code>table_suffix</code> is treated as a date where necessary.</li>
 <li>Corrected typo in variable name (<code>EVENTS_TO_EXLUDE</code> → <code>EVENTS_TO_EXCLUDE</code>).</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-21">🚀 Added<a href="#-added-21" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-23">🚀 Added<a href="#-added-23" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Implemented detection of Measurement Protocol (MP) hits.</li>
 <li>Introduced <code>session_duration_s</code> to track session lengths.</li>
@@ -520,20 +540,20 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-installer-2">🛠️ [Installer]<a href="#️-installer-2" class="hash-link" aria-label="Direct link to 🛠️ [Installer]" title="Direct link to 🛠️ [Installer]">​</a></h3>
 <p>2024-09-01</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-22">🚀 Added<a href="#-added-22" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-24">🚀 Added<a href="#-added-24" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Added link to doc</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️--installer-3">🛠️  [Installer]<a href="#️--installer-3" class="hash-link" aria-label="Direct link to 🛠️  [Installer]" title="Direct link to 🛠️  [Installer]">​</a></h3>
 <p>2024-08-01</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-23">🚀 Added<a href="#-added-23" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-25">🚀 Added<a href="#-added-25" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
 <li>Added check repository state during install process</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v0">🧰 🤝 [Core v0]<a href="#--core-v0" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v0]" title="Direct link to 🧰 🤝 [Core v0]">​</a></h3>
 <p>2024-03-10</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-init-by-artem-korneev">🌟 Init by Artem Korneev<a href="#-init-by-artem-korneev" class="hash-link" aria-label="Direct link to 🌟 Init by Artem Korneev" title="Direct link to 🌟 Init by Artem Korneev">​</a></h4></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/support-contact/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Support &amp; Contact</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/useful-resources/external-links/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Resources</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#unreleased" class="table-of-contents__link toc-highlight">Unreleased</a><ul><li><a href="#-premium" class="table-of-contents__link toc-highlight">💎 Premium</a></li><li><a href="#-core" class="table-of-contents__link toc-highlight">🧰 Core</a></li><li><a href="#-community" class="table-of-contents__link toc-highlight">🤝 Community</a></li></ul></li><li><a href="#released" class="table-of-contents__link toc-highlight">Released</a><ul><li><a href="#-premium-v224" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.4]</a></li><li><a href="#️-installer-v222" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.2]</a></li><li><a href="#-premium-v223" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.3]</a></li><li><a href="#-premium-v212" class="table-of-contents__link toc-highlight">💎 [Premium v2.1.2]</a></li><li><a href="#️-installer-v220" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.0]</a></li><li><a href="#-premium-v211" class="table-of-contents__link toc-highlight">💎 [Premium v2.1.1]</a></li><li><a href="#-premium-v205" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.5]</a></li><li><a href="#--core-v1190" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.19.0]</a></li><li><a href="#-premium-v204" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.4]</a></li><li><a href="#-premium-v203" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.3]</a></li><li><a href="#-premium-v202" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.2]</a></li><li><a href="#-premium-v201" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.1]</a></li><li><a href="#-premium-v200" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.0]</a></li><li><a href="#--core-v1180" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.18.0]</a></li><li><a href="#--core-v1170" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.17.0]</a></li><li><a href="#️--installer" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1160" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.16.0]</a></li><li><a href="#--core-v1150" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.15.0]</a></li><li><a href="#--core-v1140" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.14.0]</a></li><li><a href="#️--installer-1" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1130" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.13.0]</a></li><li><a href="#--core-v1120" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.12.0]</a></li><li><a href="#️-installer" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#--core-v1100" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.10.0]</a></li><li><a href="#--core-v160" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.6.0]</a></li><li><a href="#️-installer-1" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#--core-v150" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.5.0]</a></li><li><a href="#️--installer-2" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1]</a></li><li><a href="#️-installer-2" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#️--installer-3" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v0" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v0]</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/guides/getting-started/quick-start/">Quick Start Guide</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/modules/">Modules</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/guides/">Guides</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/table-dictionaries/">Table Dictionaries</a></li></ul></div><div class="col footer__col"><div class="footer__title">Legal</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/privacy-policy/">Privacy Policy</a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://ga4dataform.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">GA4Dataform<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Superform Labs. Built with Docusaurus.</div></div></div></footer></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-init-by-artem-korneev">🌟 Init by Artem Korneev<a href="#-init-by-artem-korneev" class="hash-link" aria-label="Direct link to 🌟 Init by Artem Korneev" title="Direct link to 🌟 Init by Artem Korneev">​</a></h4></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/support-contact/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Support &amp; Contact</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/useful-resources/external-links/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Resources</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#unreleased" class="table-of-contents__link toc-highlight">Unreleased</a><ul><li><a href="#-premium" class="table-of-contents__link toc-highlight">💎 Premium</a></li><li><a href="#-core" class="table-of-contents__link toc-highlight">🧰 Core</a></li><li><a href="#-community" class="table-of-contents__link toc-highlight">🤝 Community</a></li></ul></li><li><a href="#released" class="table-of-contents__link toc-highlight">Released</a><ul><li><a href="#️-installer-v227" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.7]</a></li><li><a href="#-premium-v225" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.5]</a></li><li><a href="#-premium-v224" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.4]</a></li><li><a href="#️-installer-v222" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.2]</a></li><li><a href="#-premium-v223" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.3]</a></li><li><a href="#-premium-v212" class="table-of-contents__link toc-highlight">💎 [Premium v2.1.2]</a></li><li><a href="#️-installer-v220" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.0]</a></li><li><a href="#-premium-v211" class="table-of-contents__link toc-highlight">💎 [Premium v2.1.1]</a></li><li><a href="#-premium-v205" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.5]</a></li><li><a href="#--core-v1190" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.19.0]</a></li><li><a href="#-premium-v204" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.4]</a></li><li><a href="#-premium-v203" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.3]</a></li><li><a href="#-premium-v202" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.2]</a></li><li><a href="#-premium-v201" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.1]</a></li><li><a href="#-premium-v200" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.0]</a></li><li><a href="#--core-v1180" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.18.0]</a></li><li><a href="#--core-v1170" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.17.0]</a></li><li><a href="#️--installer" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1160" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.16.0]</a></li><li><a href="#--core-v1150" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.15.0]</a></li><li><a href="#--core-v1140" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.14.0]</a></li><li><a href="#️--installer-1" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1130" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.13.0]</a></li><li><a href="#--core-v1120" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.12.0]</a></li><li><a href="#️-installer" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#--core-v1100" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.10.0]</a></li><li><a href="#--core-v160" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.6.0]</a></li><li><a href="#️-installer-1" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#--core-v150" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.5.0]</a></li><li><a href="#️--installer-2" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1]</a></li><li><a href="#️-installer-2" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#️--installer-3" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v0" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v0]</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/guides/getting-started/quick-start/">Quick Start Guide</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/modules/">Modules</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/guides/">Guides</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/table-dictionaries/">Table Dictionaries</a></li></ul></div><div class="col footer__col"><div class="footer__title">Legal</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/privacy-policy/">Privacy Policy</a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://ga4dataform.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">GA4Dataform<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Superform Labs. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
