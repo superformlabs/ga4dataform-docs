@@ -7,7 +7,7 @@
 
 
 <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-MRWXP5MT",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script><link rel="stylesheet" href="/assets/css/styles.6248a516.css">
-<script src="/assets/js/runtime~main.719cdae1.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.97991a20.js" defer="defer"></script>
 <script src="/assets/js/main.5ab883ba.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -27,6 +27,17 @@
 </ul>
 <hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="released">Released<a href="#released" class="hash-link" aria-label="Direct link to Released" title="Direct link to Released">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v2214">💎 [Premium v2.2.14]<a href="#-premium-v2214" class="hash-link" aria-label="Direct link to 💎 [Premium v2.2.14]" title="Direct link to 💎 [Premium v2.2.14]">​</a></h3>
+<p>2026-10-01</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed">🐛 Fixed<a href="#-fixed" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<ul>
+<li><strong>Google Ads campaign dates on new transfers</strong> (<code>google_ads_dim_campaigns</code>) in the Google Ads module - Google Ads Data Transfers created after July 2026 no longer export <code>campaign_start_date</code> / <code>campaign_end_date</code>, which broke the build. The module now reads them when present and falls back to the date part of <code>campaign_start_date_time</code> / <code>campaign_end_date_time</code>, so older and newer transfers both work</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes">Schema Changes<a href="#schema-changes" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<ul>
+<li><code>google_ads_dim_campaigns</code> gains <code>campaign_start_date_time</code> and <code>campaign_end_date_time</code> (DATETIME, account timezone) - rebuilt on the next run, no action</li>
+</ul>
+<hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v2213">💎 [Premium v2.2.13]<a href="#-premium-v2213" class="hash-link" aria-label="Direct link to 💎 [Premium v2.2.13]" title="Direct link to 💎 [Premium v2.2.13]">​</a></h3>
 <p>2026-09-16</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added">🚀 Added<a href="#-added" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
@@ -42,7 +53,7 @@
 <li><strong>Attribution report grain</strong> - with <code>dimensions</code> configured, each report&#x27;s row grain includes the dimension columns. Totals per fixed key are unchanged; dashboards that group by the existing keys keep reporting the same figures</li>
 <li><strong>Agent skills</strong> cover the new options (attribution interception points, <code>pick</code>, <code>REFERRER_EXCLUDE</code>, reprocessing after enabling it)</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes">Schema Changes<a href="#schema-changes" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-1">Schema Changes<a href="#schema-changes-1" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <ul>
 <li>The six <code>ga4_attribution_*_report</code> tables gain one column per configured dimension / custom channel grouping (rebuilt on the next run - no action)</li>
 <li><code>gcp_cost_overview</code> gains <code>project_id</code> (rebuilt on the next run - no action)</li>
@@ -61,11 +72,11 @@
 <li><strong>GA4 Event Conversion Rate module retired</strong> - <code>ga4_reporting_conversion_rates_report</code> is its successor (config moves to <code>ga4_reporting/config.yaml</code>; the old report table is not deleted - drop it manually once dashboards are migrated). The old module&#x27;s <code>is_new_session</code> drilldown was computed inverted; the new report fixes it, so new-vs-returning splits swap compared to old dashboards</li>
 <li><strong>Agent skills cover the reporting module</strong> - querying guidance (grains, non-summable columns, the ecommerce currency rule), run tags, reprocessing notes and the Premium feature guide</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed">🐛 Fixed<a href="#-fixed" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-1">🐛 Fixed<a href="#-fixed-1" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li><strong>Attribution compile error with session-only dimensions</strong> - with <code>touchpoint.mode: &#x27;session&#x27;</code> and a session-only custom dimension (e.g. <code>session_source.term</code>), the inactive <code>source_change</code> file failed the whole project compilation; the validation now only fires for the active mode</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-1">Schema Changes<a href="#schema-changes-1" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-2">Schema Changes<a href="#schema-changes-2" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <ul>
 <li><code>ga4_sessions</code> gains <code>totals.sum.purchase_revenue_in_usd</code> (new default session total, feeds the acquisition report&#x27;s <code>revenue_in_usd</code>). New <strong>STRUCT field</strong>: on existing installs, patch the <code>totals</code> schema or rebuild <code>ga4_sessions</code>, then reprocess to backfill history - the ga4df-custom-params skill covers the procedure</li>
 <li><code>ga4_events</code> gains the top-level <code>event_value_in_usd</code> passthrough (added automatically; historical rows stay NULL until reprocessed)</li>
@@ -92,7 +103,7 @@
 <li><strong>Sharper agent skills</strong> - the side-effecting skills (reprocessing, custom params, custom models, managing runs, upgrade) end with checkable &quot;Done when&quot; criteria so a half-finished procedure is not reported as done; the onboarding skill was restructured for reliability; the agent guides (<code>AGENTS.md</code>/<code>CLAUDE.md</code>/<code>GEMINI.md</code>) gained a Language section disambiguating the product terms that get mixed up (reprocess vs rebuild, managed vs custom, release vs workflow, ...), and <code>MY-COMPANY.md</code> gained an &quot;Our vocabulary&quot; section for your own terms</li>
 <li><strong><code>rebuild_schedule</code> semantics documented</strong> in the GA4 Attribution module - the cron gate is evaluated when the Dataform release compiles, not when the workflow executes, so the release must recompile at least as often as the schedule needs to take effect. The config comment and docs now spell this out</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-1">🐛 Fixed<a href="#-fixed-1" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-2">🐛 Fixed<a href="#-fixed-2" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <p>All in the GA4 Attribution module, from a full correctness review:</p>
 <ul>
 <li><strong>Dates near midnight</strong> - journey and model dates were derived in UTC while the rest of the module uses <code>LOCAL_TIMEZONE</code>; touches near midnight landed in the wrong partition</li>
@@ -102,7 +113,7 @@
 <li><strong>Touch ordering and source propagation</strong> - a conversion on a session&#x27;s first event no longer ties ahead of its own traffic touch, and a conversion event&#x27;s traffic source now reaches the rest of its session</li>
 <li><strong>Smaller fixes</strong> - zero-touch journeys report <code>path_length</code> 0 (was 1), a duplicate <code>labs.perplexity.ai</code> source-category row fanned out touches on the LIKE join, the conversion-lag <code>&lt;= 30</code> bucket boundary, and NULL dimensions normalize to <code>&#x27;(not set)&#x27;</code> / ongoing journeys to <code>&#x27;(no conversion)&#x27;</code></li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-2">Schema Changes<a href="#schema-changes-2" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-3">Schema Changes<a href="#schema-changes-3" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <ul>
 <li>New columns on <code>ga4_attribution_channel_assist_report</code> and <code>ga4_attribution_micro_conversion_report</code>. Attribution tables are rebuilt on the module&#x27;s <code>rebuild_schedule</code> (default: every run), so the columns appear after the next scheduled rebuild - no manual action needed</li>
 </ul>
@@ -120,7 +131,7 @@
 <li><strong>Core config arrays now ship empty</strong> in the GA4 Attribution module (<code>conversions</code>, <code>attribution_models</code>, <code>touchpoint.source_change_unique_fields</code>) and the Google Ads module (<code>conversion_action_names</code>). Array entries in a core config merge into every installation and cannot be removed from your own config file, so the starter entries now live in your editable copy under <code>includes/custom/modules/&lt;module&gt;/</code> where you can trim or replace them</li>
 <li><strong><code>batch-reprocess.sh</code> is safer</strong> - it validates its inputs, prints the batch plan and asks for confirmation before running anything (<code>--yes</code> skips the prompt for non-interactive use), stops on the first failed batch and prints the exact command to resume from there. Default tags now include <code>transactions</code></li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-2">🐛 Fixed<a href="#-fixed-2" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-3">🐛 Fixed<a href="#-fixed-3" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li><strong>Parameter Detection first build</strong> - <code>ga4_parameter_detection_report_daily</code> failed to compile on a first (non-incremental) build <strong>when compiling with the Dataform CLI</strong>; compilations in the Dataform interface were unaffected. The module now builds from scratch either way</li>
 </ul>
@@ -145,7 +156,7 @@
 <ul>
 <li><strong>Self-describing tables</strong> - every output table&#x27;s BigQuery description now states its grain (&quot;1 row per ...&quot;), and every transformation CTE carries a purpose comment; column descriptions across the documentation set were rewritten for clarity. Helps humans and AI agents alike</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-3">Schema Changes<a href="#schema-changes-3" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-4">Schema Changes<a href="#schema-changes-4" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <ul>
 <li><code>event_original_occurrence_timestamp</code> (top-level, <code>ga4_events</code>) is added automatically on the next incremental run; historical dates stay <code>NULL</code> until reprocessed</li>
 <li><code>source_group</code> is added <strong>inside</strong> existing STRUCT columns when <code>ADD_SOURCE_GROUP_COLUMN</code> is enabled - on an existing installation this requires a schema adjustment or table rebuild, plus a reprocess to backfill history</li>
@@ -168,14 +179,14 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-installer-v228">🛠️ [Installer v2.2.8]<a href="#️-installer-v228" class="hash-link" aria-label="Direct link to 🛠️ [Installer v2.2.8]" title="Direct link to 🛠️ [Installer v2.2.8]">​</a></h3>
 <p>2026-06-16</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-3">🐛 Fixed<a href="#-fixed-3" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-4">🐛 Fixed<a href="#-fixed-4" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li><strong>Preserve customer GitHub connection on Dataform repo updates</strong> - repo updates no longer reconcile away a customer&#x27;s out-of-band GitHub connection. The Dataform repository&#x27;s externally-managed <code>git_remote_settings</code> (and workspace compilation overrides) are now left untouched on refresh, so the GitHub remote stays connected and workspaces no longer end up in a conflicted git state</li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v227">💎 [Premium v2.2.7]<a href="#-premium-v227" class="hash-link" aria-label="Direct link to 💎 [Premium v2.2.7]" title="Direct link to 💎 [Premium v2.2.7]">​</a></h3>
 <p>2026-06-15</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-4">🐛 Fixed<a href="#-fixed-4" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-5">🐛 Fixed<a href="#-fixed-5" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li><strong>Custom lineage views skipped when the step is disabled</strong> - the custom GA4 lineage actions (<code>ga4_events_custom</code>, <code>int_ga4_sessions_custom</code>, <code>ga4_sessions_custom</code>) are no longer materialized as orphan pass-through views when <code>CUSTOM_LINEAGE.&lt;table&gt;</code> is <code>false</code>; downstream tables already read the core tables directly in that case</li>
 <li><strong><code>is_final</code> timezone fix</strong> - the data-finality flag now computes <code>CURRENT_DATE()</code> in the install&#x27;s <code>LOCAL_TIMEZONE</code> instead of timezone-naive UTC, so the 72-hour late-data window flips on the correct day boundary for the data</li>
@@ -210,7 +221,7 @@
 <li><strong>Brave classified as a search engine</strong> in source categories — sessions originating from Brave Search are now correctly attributed to Organic Search in the default channel grouping</li>
 <li><strong>Improved AI referrer classification</strong> — ChatGPT and Perplexity are now classified more accurately in the default channel grouping, reducing misattribution to direct or referral</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-5">🐛 Fixed<a href="#-fixed-5" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-6">🐛 Fixed<a href="#-fixed-6" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li><strong><code>fixed_traffic_source</code> attribution fix</strong> — the GA4 BigQuery export can deliver hits out of order: a hit with an earlier timestamp may arrive in a later batch and therefore lack <code>collected_traffic_source</code>. The previous logic selected the earliest hit, which could be one of those under-informed hits, causing sessions to show incorrect or missing traffic source data. Source derivation now selects the hit with the most information, and cases where timestamp and batch ordering disagree are handled correctly. Multi-source sessions now derive the last source only from hits that have <code>collected_traffic_source</code> set. This resolves incorrect Referral classification for some Organic sources, including gclid traffic without a campaign appearing as Google Referral.</li>
 </ul>
@@ -223,13 +234,13 @@
 <li><strong><code>addDefault</code> flag for <code>CUSTOM_SESSION_TOTALS</code></strong> in the GA4 module - when <code>true</code>, merges a curated baseline of <code>eventsToCount</code>, <code>uniqueFields</code>, and <code>sumFields</code> (page_view, session_start, ecommerce events, transaction_id, user_id, device.category, page hostname/path, engagement_time_msec, purchase_revenue) with your custom entries (your entries win on <code>renameTo</code>/<code>name</code> collision). Defaults to <code>true</code> for new installs; existing installs without the flag continue to see only their explicitly configured entries</li>
 <li><strong><code>onSchemaChange: EXTEND</code></strong> on <code>google_ads_dim_ad_groups</code>, <code>google_ads_dim_ads</code>, <code>google_ads_dim_keywords</code>, and <code>google_ads_gclids</code> - column additions in future releases no longer require a rebuild</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-6">🐛 Fixed<a href="#-fixed-6" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-7">🐛 Fixed<a href="#-fixed-7" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Apostrophes and other special characters in Google Ads <code>conversion_action_names</code> (e.g. <code>Client&#x27;s Call</code>) now work - conversion action names are wrapped in BigQuery triple-quoted string literals so escaping no longer breaks Dataform&#x27;s compile pipeline</li>
 <li>Clearer error messages for Google Ads misconfigurations - separate, actionable errors when <code>enabled: true</code> but <code>gads_sources</code> is missing/empty/malformed, when <code>conversion_action_names</code> is missing/empty/malformed, and when <code>enabled: false</code> but <code>gads_sources</code> contains entries</li>
 <li>Generic config merge now concatenates and dedupes arrays (by <code>renameTo</code>/<code>name</code>/value, custom wins) instead of replacing whole arrays - lets core ship baseline arrays users can extend without redeclaring</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-4">Schema Changes<a href="#schema-changes-4" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-5">Schema Changes<a href="#schema-changes-5" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <p>This release introduces new columns on Google Ads report tables (<code>all_conversions</code>, <code>all_conversions_value</code>). Thanks to <code>onSchemaChange: EXTEND</code> no rebuild is required, but historical values for these columns will only populate from this version forward. Run a <a href="/docs/guides/running-workflows/reprocessing/">reprocessing</a> job over the desired date range if you need them backfilled.</p>
 <p>For <code>CUSTOM_SESSION_TOTALS</code>, existing installs see no schema change unless they explicitly opt in by setting <code>addDefault: true</code> in <code>includes/custom/modules/ga4/config.js</code>.</p>
 <hr>
@@ -251,17 +262,17 @@
 <li><strong>Multi-property support</strong> in the Parameter Detection module - <code>property_id</code> and <code>property_name</code> columns in all output tables for per-property parameter auditing</li>
 <li><strong><code>paramFilter</code> for Session Totals</strong> - <code>eventsToCount</code>, <code>uniqueFields</code>, and <code>sumFields</code> in <code>CUSTOM_SESSION_TOTALS</code> now support the same <code>paramFilter</code> syntax as <code>CUSTOM_SESSION_PARAMS_ARRAY</code> for conditional aggregation</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-7">🐛 Fixed<a href="#-fixed-7" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-8">🐛 Fixed<a href="#-fixed-8" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li><code>ignore_referrer</code> case sensitivity - now correctly matches GA4&#x27;s lowercase <code>&quot;true&quot;</code> value</li>
 <li>Medium attribution <code>CASE</code> reordering to prevent misclassification</li>
 <li>Module dependency resolution when a module config is disabled</li>
 <li><code>ref()</code> resolution for disabled modules</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-5">Schema Changes<a href="#schema-changes-5" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-6">Schema Changes<a href="#schema-changes-6" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <p>Updating to this version adds <code>property_id</code> and <code>property_name</code> columns to <code>ga4_parameter_detection_report_daily</code> via <code>onSchemaChange: EXTEND</code>. No full rebuild is required, but if you need historical values for these fields you will need to rebuild the table.</p>
 <hr>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v212">💎 [Premium v2.1.2]<a href="#-premium-v212" class="hash-link" aria-label="Direct link to 💎 [Premium v2.1.2]" title="Direct link to 💎 [Premium v2.1.2]">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v212">💎 [Premium v2.1.2]<a href="#-premium-v212" class="hash-link" aria-label="Direct link to  💎 [Premium v2.1.2]" title="Direct link to 💎 [Premium v2.1.2]">​</a></h3>
 <p>2026-03-09</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-15">🚀 Added<a href="#-added-15" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
@@ -298,7 +309,7 @@
 <p>This change brings the installer in line with Google Cloud security best practices and Dataform Strict Act-As mode requirements.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v211">💎 [Premium v2.1.1]<a href="#-premium-v211" class="hash-link" aria-label="Direct link to 💎 [Premium v2.1.1]" title="Direct link to 💎 [Premium v2.1.1]">​</a></h3>
 <p>2026-02-17</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-6">Schema Changes<a href="#schema-changes-6" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-7">Schema Changes<a href="#schema-changes-7" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <p>Updating to this version will add <code>property_name</code> to all output tables. No full rebuild required thanks to <code>onSchemaChange: EXTEND</code>.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-16">🚀 Added<a href="#-added-16" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
@@ -314,7 +325,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v205">💎 [Premium v2.0.5]<a href="#-premium-v205" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.5]" title="Direct link to 💎 [Premium v2.0.5]">​</a></h3>
 <p>2025-12-18</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-7">Schema Changes<a href="#schema-changes-7" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-8">Schema Changes<a href="#schema-changes-8" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <p>Updating to this version will require some tables to be fully rebuild because of a addition of new columns</p>
 <ul>
 <li><code>int_ga4_sessions</code> and <code>ga4_sessions</code> with new <code>first_user_id</code> column</li>
@@ -329,7 +340,7 @@
 <li><code>property_id</code> as column in <code>int_ga4_transactions</code> and <code>ga4_transactions</code></li>
 <li><code>is_multiday_session</code> column : Flag indicating if the session has events across more than one day</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-8">🐛 Fixed<a href="#-fixed-8" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-9">🐛 Fixed<a href="#-fixed-9" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Add missing column documentation fields</li>
 </ul>
@@ -342,7 +353,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1190">🧰 🤝 [Core v1.19.0]<a href="#--core-v1190" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.19.0]" title="Direct link to 🧰 🤝 [Core v1.19.0]">​</a></h3>
 <p>2025-12-18</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-8">Schema Changes<a href="#schema-changes-8" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-9">Schema Changes<a href="#schema-changes-9" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <p>Updating to this version will require some tables to be fully rebuild because of a addition of new columns</p>
 <ul>
 <li><code>int_ga4_sessions</code> and <code>ga4_sessions</code> with new <code>first_user_id</code> column</li>
@@ -357,7 +368,7 @@
 <li><code>property_id</code> as column in <code>int_ga4_transactions</code> and <code>ga4_transactions</code></li>
 <li><code>is_multiday_session</code> column : Flag indicating if the session has events across more than one day</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-9">🐛 Fixed<a href="#-fixed-9" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-10">🐛 Fixed<a href="#-fixed-10" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Add missing column documentation fields</li>
 </ul>
@@ -392,7 +403,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v201">💎 [Premium v2.0.1]<a href="#-premium-v201" class="hash-link" aria-label="Direct link to 💎 [Premium v2.0.1]" title="Direct link to 💎 [Premium v2.0.1]">​</a></h3>
 <p>2025-10-10</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-10">🐛 Fixed<a href="#-fixed-10" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-11">🐛 Fixed<a href="#-fixed-11" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Superform Labs internal bugfix iteration</li>
 </ul>
@@ -418,7 +429,7 @@
 <li>AI referrers added to <code>source_categories.json</code> for improved default channel grouping logic.</li>
 <li>Default channel grouping in <code>int_ga4_sessions</code>now matches the source categories with <code>LIKE</code> operator for enhanced pattern matching.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-11">🐛 Fixed<a href="#-fixed-11" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-12">🐛 Fixed<a href="#-fixed-12" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Added <code>default_config.js</code> warning text + reordered file contents for better readability.</li>
 <li>Updated <code>is_measurement_protocol_hit</code> since MP supports device parameters since 2025-06-11.</li>
@@ -455,7 +466,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1150">🧰 🤝 [Core v1.15.0]<a href="#--core-v1150" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.15.0]" title="Direct link to 🧰 🤝 [Core v1.15.0]">​</a></h3>
 <p>2025-03-11</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-12">🐛 Fixed<a href="#-fixed-12" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-13">🐛 Fixed<a href="#-fixed-13" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Replaced <code>---</code> with <code>;</code> while ensuring no duplicate semicolons appear, as the Dataform CLI was unable to handle them correctly.</li>
 <li>Proper handling of sessions spanning midnight in incremental runs. Previously, sessions crossing midnight could result in duplicate session_ids. Multi-day sessions are now correctly appended to the intermediate table and properly deduplicated in the output.</li>
@@ -463,7 +474,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1140">🧰 🤝 [Core v1.14.0]<a href="#--core-v1140" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1.14.0]" title="Direct link to 🧰 🤝 [Core v1.14.0]">​</a></h3>
 <p>2025-02-05</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-13">🐛 Fixed<a href="#-fixed-13" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-14">🐛 Fixed<a href="#-fixed-14" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Refactored <code>LOOKBACK_MILLIS</code> to be defined inline instead of a separate variable.</li>
 <li>Removed <code>LAST_NON_DIRECT_LOOKBACK_MILLIS</code> from <code>default_config.js</code>, ensuring calculations use a single inline formula.</li>
@@ -513,7 +524,7 @@
 <li>Additional columns to <code>ga4_sessions</code> and <code>ga4_events</code> tables.</li>
 <li>Introduced <code>platform</code> in session struct for better tracking.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-14">🐛 Fixed<a href="#-fixed-14" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-15">🐛 Fixed<a href="#-fixed-15" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Improved logic for properties without &quot;final&quot; days, ensuring they now increment correctly in sessions, transactions, and events models.</li>
 </ul>
@@ -562,7 +573,7 @@
 <li>Expanded <code>session_traffic_source_last_click</code> struct to include additional ad tracking fields.</li>
 <li>Added <code>publisher</code> struct to store publisher-level ad attributes.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-15">🐛 Fixed<a href="#-fixed-15" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-16">🐛 Fixed<a href="#-fixed-16" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Updated default channel grouping logic to replace <code>NULL</code> values with &quot;Direct&quot;.</li>
 </ul>
@@ -586,7 +597,7 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v1">🧰 🤝 [Core v1]<a href="#--core-v1" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v1]" title="Direct link to 🧰 🤝 [Core v1]">​</a></h3>
 <p>2024-09-01</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-16">🐛 Fixed<a href="#-fixed-16" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-fixed-17">🐛 Fixed<a href="#-fixed-17" class="hash-link" aria-label="Direct link to 🐛 Fixed" title="Direct link to 🐛 Fixed">​</a></h4>
 <ul>
 <li>Resolved an issue with session attribution logic by adjusting lookback window calculations.</li>
 <li>Corrected logic for determining the last non-direct traffic source.</li>
@@ -720,6 +731,6 @@
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="--core-v0">🧰 🤝 [Core v0]<a href="#--core-v0" class="hash-link" aria-label="Direct link to 🧰 🤝 [Core v0]" title="Direct link to 🧰 🤝 [Core v0]">​</a></h3>
 <p>2024-03-10</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-init-by-artem-korneev">🌟 Init by Artem Korneev<a href="#-init-by-artem-korneev" class="hash-link" aria-label="Direct link to 🌟 Init by Artem Korneev" title="Direct link to 🌟 Init by Artem Korneev">​</a></h4></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/support-contact/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Support &amp; Contact</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/useful-resources/external-links/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Resources</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#unreleased" class="table-of-contents__link toc-highlight">Unreleased</a><ul><li><a href="#-premium" class="table-of-contents__link toc-highlight">💎 Premium</a></li><li><a href="#-core" class="table-of-contents__link toc-highlight">🧰 Core</a></li><li><a href="#-community" class="table-of-contents__link toc-highlight">🤝 Community</a></li></ul></li><li><a href="#released" class="table-of-contents__link toc-highlight">Released</a><ul><li><a href="#-premium-v2213" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.13]</a></li><li><a href="#-premium-v2212" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.12]</a></li><li><a href="#️-installer-v2212" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.12]</a></li><li><a href="#-premium-v2211" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.11]</a></li><li><a href="#-premium-v2210" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.10]</a></li><li><a href="#️-installer-v2211" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.11]</a></li><li><a href="#-premium-v229" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.9]</a></li><li><a href="#️-installer-v2210" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.10]</a></li><li><a href="#-premium-v228" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.8]</a></li><li><a href="#️-installer-v228" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.8]</a></li><li><a href="#-premium-v227" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.7]</a></li><li><a href="#-premium-v226" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.6]</a></li><li><a href="#️-installer-v227" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.7]</a></li><li><a href="#-premium-v225" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.5]</a></li><li><a href="#-premium-v224" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.4]</a></li><li><a href="#️-installer-v222" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.2]</a></li><li><a href="#-premium-v223" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.3]</a></li><li><a href="#-premium-v212" class="table-of-contents__link toc-highlight">💎 [Premium v2.1.2]</a></li><li><a href="#️-installer-v220" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.0]</a></li><li><a href="#-premium-v211" class="table-of-contents__link toc-highlight">💎 [Premium v2.1.1]</a></li><li><a href="#-premium-v205" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.5]</a></li><li><a href="#--core-v1190" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.19.0]</a></li><li><a href="#-premium-v204" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.4]</a></li><li><a href="#-premium-v203" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.3]</a></li><li><a href="#-premium-v202" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.2]</a></li><li><a href="#-premium-v201" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.1]</a></li><li><a href="#-premium-v200" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.0]</a></li><li><a href="#--core-v1180" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.18.0]</a></li><li><a href="#--core-v1170" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.17.0]</a></li><li><a href="#️--installer" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1160" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.16.0]</a></li><li><a href="#--core-v1150" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.15.0]</a></li><li><a href="#--core-v1140" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.14.0]</a></li><li><a href="#️--installer-1" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1130" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.13.0]</a></li><li><a href="#--core-v1120" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.12.0]</a></li><li><a href="#️-installer" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#--core-v1100" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.10.0]</a></li><li><a href="#--core-v160" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.6.0]</a></li><li><a href="#️-installer-1" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#--core-v150" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.5.0]</a></li><li><a href="#️--installer-2" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1]</a></li><li><a href="#️-installer-2" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#️--installer-3" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v0" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v0]</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/guides/getting-started/quick-start/">Quick Start Guide</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/modules/">Modules</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/guides/">Guides</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/table-dictionaries/">Table Dictionaries</a></li></ul></div><div class="col footer__col"><div class="footer__title">Legal</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/privacy-policy/">Privacy Policy</a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://ga4dataform.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">GA4Dataform<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Superform Labs. Built with Docusaurus.</div></div></div></footer></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-init-by-artem-korneev">🌟 Init by Artem Korneev<a href="#-init-by-artem-korneev" class="hash-link" aria-label="Direct link to 🌟 Init by Artem Korneev" title="Direct link to 🌟 Init by Artem Korneev">​</a></h4></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/support-contact/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Support &amp; Contact</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/useful-resources/external-links/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Resources</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#unreleased" class="table-of-contents__link toc-highlight">Unreleased</a><ul><li><a href="#-premium" class="table-of-contents__link toc-highlight">💎 Premium</a></li><li><a href="#-core" class="table-of-contents__link toc-highlight">🧰 Core</a></li><li><a href="#-community" class="table-of-contents__link toc-highlight">🤝 Community</a></li></ul></li><li><a href="#released" class="table-of-contents__link toc-highlight">Released</a><ul><li><a href="#-premium-v2214" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.14]</a></li><li><a href="#-premium-v2213" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.13]</a></li><li><a href="#-premium-v2212" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.12]</a></li><li><a href="#️-installer-v2212" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.12]</a></li><li><a href="#-premium-v2211" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.11]</a></li><li><a href="#-premium-v2210" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.10]</a></li><li><a href="#️-installer-v2211" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.11]</a></li><li><a href="#-premium-v229" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.9]</a></li><li><a href="#️-installer-v2210" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.10]</a></li><li><a href="#-premium-v228" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.8]</a></li><li><a href="#️-installer-v228" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.8]</a></li><li><a href="#-premium-v227" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.7]</a></li><li><a href="#-premium-v226" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.6]</a></li><li><a href="#️-installer-v227" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.7]</a></li><li><a href="#-premium-v225" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.5]</a></li><li><a href="#-premium-v224" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.4]</a></li><li><a href="#️-installer-v222" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.2]</a></li><li><a href="#-premium-v223" class="table-of-contents__link toc-highlight">💎 [Premium v2.2.3]</a></li><li><a href="#-premium-v212" class="table-of-contents__link toc-highlight">💎 [Premium v2.1.2]</a></li><li><a href="#️-installer-v220" class="table-of-contents__link toc-highlight">🛠️ [Installer v2.2.0]</a></li><li><a href="#-premium-v211" class="table-of-contents__link toc-highlight">💎 [Premium v2.1.1]</a></li><li><a href="#-premium-v205" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.5]</a></li><li><a href="#--core-v1190" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.19.0]</a></li><li><a href="#-premium-v204" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.4]</a></li><li><a href="#-premium-v203" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.3]</a></li><li><a href="#-premium-v202" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.2]</a></li><li><a href="#-premium-v201" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.1]</a></li><li><a href="#-premium-v200" class="table-of-contents__link toc-highlight">💎 [Premium v2.0.0]</a></li><li><a href="#--core-v1180" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.18.0]</a></li><li><a href="#--core-v1170" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.17.0]</a></li><li><a href="#️--installer" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1160" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.16.0]</a></li><li><a href="#--core-v1150" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.15.0]</a></li><li><a href="#--core-v1140" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.14.0]</a></li><li><a href="#️--installer-1" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1130" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.13.0]</a></li><li><a href="#--core-v1120" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.12.0]</a></li><li><a href="#️-installer" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#--core-v1100" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.10.0]</a></li><li><a href="#--core-v160" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.6.0]</a></li><li><a href="#️-installer-1" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#--core-v150" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1.5.0]</a></li><li><a href="#️--installer-2" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v1" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v1]</a></li><li><a href="#️-installer-2" class="table-of-contents__link toc-highlight">🛠️ [Installer]</a></li><li><a href="#️--installer-3" class="table-of-contents__link toc-highlight">🛠️  [Installer]</a></li><li><a href="#--core-v0" class="table-of-contents__link toc-highlight">🧰 🤝 [Core v0]</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/guides/getting-started/quick-start/">Quick Start Guide</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/modules/">Modules</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/guides/">Guides</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/category/table-dictionaries/">Table Dictionaries</a></li></ul></div><div class="col footer__col"><div class="footer__title">Legal</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/privacy-policy/">Privacy Policy</a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://ga4dataform.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">GA4Dataform<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Superform Labs. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
