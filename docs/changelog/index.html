@@ -7,7 +7,7 @@
 
 
 <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-MRWXP5MT",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script><link rel="stylesheet" href="/assets/css/styles.6248a516.css">
-<script src="/assets/js/runtime~main.811db928.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.ea5f1f81.js" defer="defer"></script>
 <script src="/assets/js/main.7344d1e6.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -53,7 +53,7 @@
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes">Schema Changes<a href="#schema-changes" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <ul>
 <li><code>ga4_parameter_detection_report_daily</code> gains <code>unexpected_occurrence_count</code> (INT64, NULL where no rule applies). It is added automatically on the first run, no rebuild needed. <code>daily_health</code> and <code>aggregated</code> gain <code>unexpected_occurrence_count</code> and <code>unexpected_value_rate</code></li>
-<li>If your <code>report_daily</code> history predates v2.2.17, reprocess it in place (<code>REPROCESS_START_DATE</code> / <code>REPROCESS_END_DATE</code>) to fill the host counts and issue types on old rows. Do not use a full rebuild: it drops history older than <code>max_lookback_days</code>. See <a href="/docs/modules/ga4-parameter-detection/#upgrading-from-earlier-versions">Upgrading</a></li>
+<li>If your <code>report_daily</code> history predates v2.2.17, reprocess it in place (<code>REPROCESS_START_DATE</code> / <code>REPROCESS_END_DATE</code>) to fill the host counts and issue types on old rows. A full rebuild instead only keeps the days from its start date onward - by default the last 7 days. See <a href="/docs/modules/ga4-parameter-detection/#upgrading-from-earlier-versions">Upgrading</a></li>
 </ul>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v2217">💎 [Premium v2.2.17]<a href="#-premium-v2217" class="hash-link" aria-label="Direct link to 💎 [Premium v2.2.17]" title="Direct link to 💎 [Premium v2.2.17]">​</a></h3>
@@ -137,7 +137,7 @@
 <li><strong>Attribution report grain</strong> - with <code>dimensions</code> configured, each report&#x27;s row grain includes the dimension columns. Totals per fixed key are unchanged; dashboards that group by the existing keys keep reporting the same figures</li>
 <li><strong>Agent skills</strong> cover the new options (attribution interception points, <code>pick</code>, <code>REFERRER_EXCLUDE</code>, reprocessing after enabling it)</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-4">Schema Changes<a href="#schema-changes-4" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">  ​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schema-changes-4">Schema Changes<a href="#schema-changes-4" class="hash-link" aria-label="Direct link to Schema Changes" title="Direct link to Schema Changes">​</a></h4>
 <ul>
 <li>The six <code>ga4_attribution_*_report</code> tables gain one column per configured dimension / custom channel grouping (rebuilt on the next run - no action)</li>
 <li><code>gcp_cost_overview</code> gains <code>project_id</code> (rebuilt on the next run - no action)</li>
@@ -253,7 +253,7 @@
 <li><strong><code>MY-COMPANY.md</code> preserved on updates</strong> - the business-context template ships with Premium v2.2.9 and is created when missing, but once you&#x27;ve filled it in, package updates never overwrite it (same guarantee as <code>definitions/custom/</code> and <code>includes/custom/</code>)</li>
 </ul>
 <hr>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v228">💎 [Premium v2.2.8]<a href="#-premium-v228" class="hash-link" aria-label="Direct link to 💎 [Premium v2.2.8]" title="Direct link to 💎 [Premium v2.2.8]">  ​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-premium-v228">💎 [Premium v2.2.8]<a href="#-premium-v228" class="hash-link" aria-label="Direct link to 💎 [Premium v2.2.8]" title="Direct link to 💎 [Premium v2.2.8]">​</a></h3>
 <p>2026-06-22</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-12">🚀 Added<a href="#-added-12" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
 <ul>
@@ -444,7 +444,7 @@
 <li><code>int_ga4_transactions</code> and <code>ga4_transactions</code> with new <code>property_id</code> column</li>
 <li><code>ga4_events</code> with new records in event_params</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-22">🚀 Added<a href="#-added-22" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-added-22">🚀 Added<a href="#-added-22" class="hash-link" aria-label="Direct link to 🚀 Added" title="Direct link to 🚀 Added"> ​</a></h4>
 <ul>
 <li><code>unique_search term</code>, <code>gad_campaingid</code>, <code>gad_source</code> as standard event params</li>
 <li><code>gclsrc</code> as param to check to classify as Google</li>
